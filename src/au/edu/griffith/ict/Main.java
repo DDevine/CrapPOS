@@ -2,6 +2,7 @@ package au.edu.griffith.ict;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 
 public class Main {
@@ -37,4 +38,17 @@ public class Main {
 	//void display(){
 		// Display... what?
 	//}
+	/** Requests the user to input a new menu item */
+	private MenuItem requestItem(){
+		System.out.println("Please select a menu item.");
+		for(int i = 0; i < menu.getItems(); i++){
+			MenuItem item = menu.getItem(i);
+			if(item == null) continue;
+			System.out.printf("%.4f %.20s %.2f", item.getItemNo(), item.getName(), item.getPrice());
+		}
+		System.out.println("Menu item ID: ");
+		Scanner sc = new Scanner(System.in);
+		MenuItem item = menu.getItem(sc.nextInt());
+		return item;
+	}
 }

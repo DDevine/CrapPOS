@@ -31,15 +31,30 @@ public class Customer{
 	public String getAddress(){
 		return address;
 	}
+	/**
+	 * @return The customers full name
+	 */
 	public String getName(){
 		return name;
 	}
+	/**
+	 * Sets the customers phone number (Should not this field be final? -Dirk)
+	 * @param phNo The customers phone number
+	 */
 	public void setPhoneNo(String phNo){
 		this.phNo = phNo;
 	}
+	/**
+	 * Sets the customers address
+	 * @param address The address of the customer
+	 */
 	public void setAddress(String address){
 		this.address = address;
 	}
+	/**
+	 * Sets the customers name
+	 * @param name The name of the customer
+	 */
 	public void setName(String name){
 		this.name = name;
 	}

@@ -106,6 +106,7 @@ public class CustomerManager implements Manager{
 				out.print(c.getAddress());
 				out.println();
 			}
+			out.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace(); //DEBUG
 			//Irrecoverable.

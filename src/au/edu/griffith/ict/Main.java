@@ -1,5 +1,7 @@
 package au.edu.griffith.ict;
-import au.edu.griffith.ict.*;
+
+import java.util.HashMap;
+import java.util.LinkedList;
 
 
 public class Main {
@@ -7,6 +9,10 @@ public class Main {
 	// itemManager: Menu
 	// orders: Order[*]
 	// users: User[*]
+	private CustomerManager customers;
+	private Menu menu;
+	private LinkedList<Order> orders;
+	private HashMap<Integer, User> users;
 
 	public static void main(String[] args){
 		System.out.println("Hello World");

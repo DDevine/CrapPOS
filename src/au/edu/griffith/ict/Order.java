@@ -179,7 +179,7 @@ public class Order{
     public String toString(){
     	StringBuilder sb = new StringBuilder();
     	sb.append("Customer: " + cust.getPhoneNo());
-    	sb.append("=======");
+    	sb.append("\n=======");
     	sb.append("\nItems:\n");
     	
     	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));

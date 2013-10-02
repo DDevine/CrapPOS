@@ -117,7 +117,11 @@ public class Main {
 		        
 		        System.out.println("=== User Handling ===");
 		        System.out.println("Logout (Q)");
+		        System.out.println("Create User (UC)"); //Not implemented
+		        System.out.println("Delete User (UD)"); //Not implemented
+		        System.out.println("Edit User (UE)"); //Not implemented
 		        System.out.print("Option: ");
+		        
 		        String s = sc.nextLine();
 		        
 		        if(s.equalsIgnoreCase("C")){
@@ -165,7 +169,59 @@ public class Main {
 		        		System.out.println("Invalid number supplied.");
 		        	}
 		        }
-		        
+		        else if(s.equalsIgnoreCase("UC")){
+		        	//Create user
+		        	try{
+			        	System.out.print("User ID: ");
+			        	int id = Integer.parseInt(sc.nextLine());
+			        	System.out.print("Password: ");
+			        	String pass = sc.nextLine();
+			        	System.out.print("Give Admin Rights? (Y/N): ");
+			        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
+			        	User u = new User(id, pass, isAdmin);
+			        	users.put(u.getStaffNo(), u);
+			        	System.out.println("User created!");
+		        	}
+		        	catch(NumberFormatException e){
+		        		System.out.println("Invalid User ID supplied.");
+		        	}
+		        }
+		        else if(s.equalsIgnoreCase("UD")){
+		        	System.out.print("Delete User ID: ");
+		        	try{
+		        		int id = Integer.parseInt(sc.nextLine());
+		        		if(users.remove(id) != null){
+		        			System.out.println("Deletion success.");
+		        		}
+		        		else{
+		        			System.out.println("User not found.");
+		        		}
+		        	}
+		        	catch(NumberFormatException e){
+		        		System.out.println("Invalid ID specified!");
+		        	}
+		        }
+		        else if(s.equalsIgnoreCase("UE")){
+		        	System.out.print("Edit User ID: ");
+		        	try{
+		        		int id = Integer.parseInt(sc.nextLine());
+		        		if(users.containsKey(id) == false){ //No such user
+		        			System.out.println("Invalid user ID specified!");
+		        			continue;
+		        		}
+		        		
+		        		System.out.print("New Password: ");
+			        	String pass = sc.nextLine();
+			        	System.out.print("Give Admin Rights? (Y/N): ");
+			        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
+			        	User u = new User(id, pass, isAdmin);
+			        	users.put(u.getStaffNo(), u);
+			        	System.out.println("User modified!");
+		        	}
+		        	catch(NumberFormatException e){
+		        		System.out.println("Invalid ID specified!");
+		        	}
+		        }
 		        else if(s.equalsIgnoreCase("Q")){
 		        	user = null;
 		        }

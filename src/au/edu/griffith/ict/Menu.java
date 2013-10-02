@@ -101,12 +101,10 @@ public class Menu implements Manager{
     }
     
     public int nextItemNo(){
-        return nextIDNo;
+        return nextIDNo++;
     }
     public int getItems(){
-        int i = menuItems.length;
-        while(menuItems[--i] == null);
-        return i + 1;
+        return nextIDNo - 1;
     }
 
     

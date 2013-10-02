@@ -190,11 +190,12 @@ public class Order{
             sb.append(String.format("%-3d %-20.20s $%-3.2f x%d\n", item.getItemNo(), item.getName(), item.getPrice(), amount));
             total += amount * item.getPrice();
         }
-    	sb.append("=======");
-    	sb.append(String.format("Total: %.2f", total));
+    	sb.append("=======\n");
+    	sb.append(String.format("Total: %.2f\n", total));
     	sb.append("Delivered: " + (delivery ? "Y" : "N"));
-    	sb.append("Cash: " + (isCash ? "Y" : "N"));
-    	sb.append("Closed: " + (isClosed ? "Y" : "N"));
+    	sb.append("\nCash: " + (isCash ? "Y" : "N"));
+    	sb.append("\nClosed: " + (isClosed ? "Y" : "N"));
+    	sb.append("\n");
     	
     	
     	return sb.toString();

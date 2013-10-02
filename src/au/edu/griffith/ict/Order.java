@@ -49,7 +49,6 @@ public class Order{
     * @return Retruns a reference to a customer Object, or null.
     */
     public Customer getCustomer(){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         return cust;
     }
     
@@ -58,7 +57,6 @@ public class Order{
     * @return Returns a boolean. True if the order is to be delivered, else False.
     */
     public boolean isDelivery(){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         return delivery;
     }
     
@@ -68,12 +66,11 @@ public class Order{
     * @param quantity   The number of the MenuItem to be added.
     */
     public void add(MenuItem item, int quantity){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         if(items.containsKey(item)){
             int n = items.get(item);
             quantity += n;
         }
-        items.put(item, quantity);
+        this.set(item, quantity);
     }
     
     /**
@@ -82,16 +79,15 @@ public class Order{
     * @param quantity   The number of items to remove.
     */
     public void remove(MenuItem item, int quantity){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         if(items.containsKey(item)){
             int n = items.get(item);
             quantity -= n;
         }
         if(quantity <= 0){
-            items.remove(item);
+        	this.set(item, 0);
         }
         else{
-            items.put(item, quantity);
+        	this.set(item, quantity);
         }
     }
     
@@ -101,8 +97,12 @@ public class Order{
     * @param quantity   The number of MenuItem objects the order is to have.
     */
     public void set(MenuItem item, int quantity){
-        //throw new UnsupportedOperationException("Not implemented yet.");
+    	if(items.get(item) != null){
+    		int amount = items.get(item);
+    		runningTotal -= (amount * item.getPrice());
+    	}
         items.put(item, quantity);
+        runningTotal += quantity * item.getPrice();
     }
     
     /**
@@ -110,7 +110,6 @@ public class Order{
     * @param item       The MenuItem of which you want to retrieve the quantity for.
     */
     public int get(MenuItem item){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         if(items.containsKey(item)){
             /* Long story why this isn't simply "return items.get(item);"...
              * The map maps OBJECTS to OBJECTS. When an int is put in the map, it is wrapped as an INTEGER (Thanks to java's auto boxing)
@@ -131,7 +130,6 @@ public class Order{
     * Get the total price of the items on the order.
     */
     public float getTotal(){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         return runningTotal;
     }
     
@@ -146,7 +144,6 @@ public class Order{
     * Return whether the order has been closed or not.
     */
     public boolean getClosed(){
-        //throw new UnsupportedOperationException("Not implemented yet.");
         return isClosed;
     }
     

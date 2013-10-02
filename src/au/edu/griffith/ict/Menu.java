@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu implements Manager{
+<<<<<<< HEAD
 	/**
 	 * A map of ItemIDNumber to MenuItem
 	 */
@@ -16,6 +17,15 @@ public class Menu implements Manager{
      * Keeps track of the next available ID number 
      */
     private int nextIDNo;
+=======
+    //This would be so much easier with an array list.
+    /** The menuItems array stores items that are on a menu. */
+    private MenuItem[] menuItems = new MenuItem[3]; // Use menuItem.getNo() as UNIQUE ID here.
+    /** Keeps track of the next available ID number */
+    private int nextIDNo;
+    /** A reference to the file that the menu is serialised to and deserialised from. */
+    private File file;
+>>>>>>> f0ce1e13f28b4ce146a7605ad4e004cbef4f1f1b
     
     /**
      * A reference to the file that the menu is serialised to and deserialised from. 
@@ -117,6 +127,17 @@ public class Menu implements Manager{
     public int nextItemNo(){
         return nextIDNo++;
     }
+<<<<<<< HEAD
+=======
+    
+    /**
+    * Return the number of items in the menu.
+    * @return An integer which represents the number of items in the menu.
+    */
+    public int getItems(){
+        return nextIDNo - 1;
+    }
+>>>>>>> f0ce1e13f28b4ce146a7605ad4e004cbef4f1f1b
 
     /**
     * Remove an item from the menu.

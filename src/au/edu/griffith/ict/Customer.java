@@ -15,9 +15,9 @@ public class Customer{
      * @param name The full name of the customer
      */
     public Customer(String phNumber, String address, String name){
-        phNo = phNumber;
-        address = address;
-        name = name;
+    	this.phNo = phNumber;
+        this.address = address;
+        this.name = name;
     }
     
     /**

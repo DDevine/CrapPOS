@@ -128,7 +128,10 @@ public class Menu implements Manager{
         return nextIDNo++;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f0ce1e13f28b4ce146a7605ad4e004cbef4f1f1b
     
     /**
     * Return the number of items in the menu.

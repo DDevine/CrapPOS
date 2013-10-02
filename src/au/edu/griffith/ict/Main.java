@@ -14,6 +14,7 @@ public class Main {
 	private Menu menu;
 	private LinkedList<Order> orders;
 	private HashMap<Integer, User> users;
+	private float dayTotal; //This wasn't in the design docs.
 
 	public static void main(String[] args){
 		System.out.println("Hello World");
@@ -38,17 +39,48 @@ public class Main {
 	//void display(){
 		// Display... what?
 	//}
-	/** Requests the user to input a new menu item */
-	private MenuItem requestItem(){
-		System.out.println("Please select a menu item.");
+	/*private Order buildOrder(){
+		Order
+	}*/
+	
+	/** Prints the menu out to the user */
+	private void displayMenu(){
 		for(int i = 0; i < menu.getItems(); i++){
 			MenuItem item = menu.getItem(i);
 			if(item == null) continue;
 			System.out.printf("%.4f %.20s %.2f", item.getItemNo(), item.getName(), item.getPrice());
 		}
+	}
+	
+	/** 
+	 * Requests the user to input a new menu item
+	 * @return Displays the menu to the user and requests they enter an item.
+	 * Returns null if there is no new item.
+	 */
+	private MenuItem requestItem(){
+		System.out.println("Please select a menu item. To cancel, just press enter.");
+		displayMenu();
 		System.out.println("Menu item ID: ");
 		Scanner sc = new Scanner(System.in);
-		MenuItem item = menu.getItem(sc.nextInt());
-		return item;
+		String s = sc.nextLine();
+		sc.close();
+		if(s.isEmpty()) return null;
+		try{
+			MenuItem item = menu.getItem(Integer.parseInt(s));
+			return item;
+		}
+		catch(NumberFormatException e){
+			System.out.println(s + " is not a valid number! Cancelling.");
+		}
+		return null;
+	}
+	/** Requests the user input a new integer
+	 * @return The int they entered	
+	 */
+	private int requestNumber(){
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		sc.close();
+		return i;
 	}
 }

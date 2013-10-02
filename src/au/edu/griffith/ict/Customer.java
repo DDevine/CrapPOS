@@ -15,7 +15,7 @@ public class Customer{
      * @param name The full name of the customer
      */
     public Customer(String phNumber, String address, String name){
-    	this.phNo = phNumber;
+        this.phNo = phNumber;
         this.address = address;
         this.name = name;
     }
@@ -46,7 +46,7 @@ public class Customer{
      * @param phNo The customers phone number
      */
     public void setPhoneNo(String phNo){
-    	this.phNo = phNo;
+        this.phNo = phNo;
     }
     
     /**
@@ -54,7 +54,7 @@ public class Customer{
      * @param address The address of the customer
      */
     public void setAddress(String address){
-    	this.address = address;
+        this.address = address;
     }
     
     /**
@@ -62,6 +62,6 @@ public class Customer{
      * @param name The name of the customer
      */
     public void setName(String name){
-    	this.name = name;
+        this.name = name;
     }
 }

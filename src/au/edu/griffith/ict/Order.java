@@ -8,7 +8,7 @@ public class Order{
     * An order contains items - stored as an array of MenuItem objects.
     */    
     //private MenuItem[] items;
-	private HashMap<MenuItem, Integer> items = new HashMap<MenuItem, Integer>();
+    private HashMap<MenuItem, Integer> items = new HashMap<MenuItem, Integer>();
     
     /**
     * The Customer to which the order belongs to.
@@ -41,7 +41,7 @@ public class Order{
      * @param c The customer
      */
     public Order(Customer c){
-    	this.cust = c;
+        this.cust = c;
     }
     
     /**
@@ -50,7 +50,7 @@ public class Order{
     */
     public Customer getCustomer(){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	return cust;
+        return cust;
     }
     
     /**
@@ -59,7 +59,7 @@ public class Order{
     */
     public boolean isDelivery(){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	return delivery;
+        return delivery;
     }
     
     /**
@@ -69,11 +69,11 @@ public class Order{
     */
     public void add(MenuItem item, int quantity){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	if(items.containsKey(item)){
-    		int n = items.get(item);
-    		quantity += n;
-    	}
-    	items.put(item, quantity);
+        if(items.containsKey(item)){
+            int n = items.get(item);
+            quantity += n;
+        }
+        items.put(item, quantity);
     }
     
     /**
@@ -84,14 +84,14 @@ public class Order{
     public void remove(MenuItem item, int quantity){
         //throw new UnsupportedOperationException("Not implemented yet.");
         if(items.containsKey(item)){
-    		int n = items.get(item);
-    		quantity -= n;
-    	}
+            int n = items.get(item);
+            quantity -= n;
+        }
         if(quantity <= 0){
-        	items.remove(item);
+            items.remove(item);
         }
         else{
-        	items.put(item, quantity);
+            items.put(item, quantity);
         }
     }
     
@@ -102,7 +102,7 @@ public class Order{
     */
     public void set(MenuItem item, int quantity){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	items.put(item, quantity);
+        items.put(item, quantity);
     }
     
     /**
@@ -111,20 +111,20 @@ public class Order{
     */
     public int get(MenuItem item){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	if(items.containsKey(item)){
-    		/* Long story why this isn't simply "return items.get(item);"...
-    		 * The map maps OBJECTS to OBJECTS. When an int is put in the map, it is wrapped as an INTEGER (Thanks to java's auto boxing)
-    		 * If the map returns NULL for the value (as it should if the map does not contain that key), then this NULL value is casted
-    		 * to the given type (Eg, a null INTEGER object).
-    		 * 
-    		 * Since we're dealing with basic types that cannot be null (int), when this NULL INTEGER is casted to an int, it will throw
-    		 * a null pointer... because the INTEGER object is null.
-    		 */
-    		return items.get(item); 
-    	}
-    	else{
-    		return 0;
-    	}
+        if(items.containsKey(item)){
+            /* Long story why this isn't simply "return items.get(item);"...
+             * The map maps OBJECTS to OBJECTS. When an int is put in the map, it is wrapped as an INTEGER (Thanks to java's auto boxing)
+             * If the map returns NULL for the value (as it should if the map does not contain that key), then this NULL value is casted
+             * to the given type (Eg, a null INTEGER object).
+             * 
+             * Since we're dealing with basic types that cannot be null (int), when this NULL INTEGER is casted to an int, it will throw
+             * a null pointer... because the INTEGER object is null.
+             */
+            return items.get(item); 
+        }
+        else{
+            return 0;
+        }
     }
     
     /**
@@ -132,7 +132,7 @@ public class Order{
     */
     public float getTotal(){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	return runningTotal;
+        return runningTotal;
     }
     
     /**
@@ -147,7 +147,7 @@ public class Order{
     */
     public boolean getClosed(){
         //throw new UnsupportedOperationException("Not implemented yet.");
-    	return isClosed;
+        return isClosed;
     }
     
     /**

@@ -1,0 +1,4 @@
+Defects so far:
+#1: The Menu class has a field called price. The menu does not require it.
+#2: A customers phone number may be changed using the appropriate method. This field should be final.
+#3: The Main class does not store a days total in the UML, but will require it in the program.

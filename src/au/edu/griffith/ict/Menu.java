@@ -7,12 +7,20 @@ import java.util.Scanner;
 
 public class Menu implements Manager{
     //This would be so much easier with an array list.
+    /** The menuItems array stores items that are on a menu. */
     private MenuItem[] menuItems = new MenuItem[3]; // Use menuItem.getNo() as UNIQUE ID here.
+    /** Keeps track of the next available ID number */
     private int nextIDNo;
+    /** A reference to the file that the menu is serialised to and deserialised from. */
     private File file;
     
     //Why the hell does our UML have a price field in the MENU for?\
     
+    /** 
+    * Get a MenuItem from the menu identified by it's item number.
+    * @param itemNo The identifier for a particular item.
+    * @return A MenuItem object that matches the identifier, else null.
+    */
     public MenuItem getItem(int itemNo){
         //Error checking
         if(menuItems.length <= itemNo || itemNo < 0){
@@ -21,10 +29,18 @@ public class Menu implements Manager{
         return menuItems[itemNo];
     }
     
+    /**
+    * This method does not make sense.
+    */
     public void updateItem(MenuItem item){
         this.save();
     }
     
+    /**
+    * Deserialise a Menu from a database given a file to use as a database.
+    * @param file The file to use as the database.
+    * @return Return True if the database was found and successfully loaded.
+    */
     @Override
     public boolean loadDatabase(String file) {
         try{
@@ -70,6 +86,9 @@ public class Menu implements Manager{
         return true;
     }
     
+    /**
+    * Serialise the MenuItems on the Menu and write them to the database.
+    */
     private void save(){
         try{
             PrintStream ps = new PrintStream(file);
@@ -89,6 +108,10 @@ public class Menu implements Manager{
         }
     }
 
+    /**
+    * Add a new item to the menu.
+    * @param item The item to be added to the menu.
+    */
     public void newItem(MenuItem item){
         if(menuItems.length <= item.getItemNo()){
             //Resize the array
@@ -100,14 +123,27 @@ public class Menu implements Manager{
         this.save();
     }
     
+    /**
+    * Increment and return the next available Item ID number.
+    * @return An int representing the next unused item ID number.
+    */
     public int nextItemNo(){
         return nextIDNo++;
     }
+    
+    /**
+    * Return the number of items in the menu.
+    * @return An integer which represents the number of items in the menu.
+    */
     public int getItems(){
         return nextIDNo - 1;
     }
 
-    
+    /**
+    * Remove an item from the menu.
+    * @param itemNo The item number of the item to be removed.
+    * @return Returns True if the item was successfully removed. If the item number does not exist within the menu it will return False.
+    */
     public boolean removeItem(int itemNo){
         if(itemNo < 0 || itemNo >= menuItems.length || menuItems[itemNo] == null){
             return false;

@@ -39,10 +39,43 @@ public class Main {
     	users = new HashMap<Integer, User>();
     	String cwd = System.getProperty("user.dir");
     	menu.loadDatabase(cwd + File.separatorChar + "menu.txt");
-    	customers.loadDatabase(cwd + File.separator + "customers.txt");
+        customers.loadDatabase(cwd + File.separator + "customers.txt");
+        
+        //Begin login system
+        Scanner sc = new Scanner(System.in);
+        User user = null;
+        while(user == null){
+            System.out.println("User ID: ");
+            try{
+                user = users.get(Integer.parseInt(sc.nextLine()));
+                if(user == null){
+                    System.out.println("No such user found!");
+                    continue;
+                }
+                
+                System.out.print("Password: ");
+                String pass = sc.nextLine();
+                if(pass.equals(user.getPassword()) == false){
+                    System.out.println("Password incorrect.");
+                    user = null;
+                    continue;
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("Invalid user ID# given!");
+            }
+        }
+        System.out.println("Logged in as user #" + user.getStaffNo() + ".");
+        sc.close();
+        //End login system
+        
+    	
     	
     	//TODO: We need the login system and loads more here.
     	Order o = buildOrder();
+    	
+    	this.addOrder(o);
+    	dayTotal += o.getTotal();
     }
 
     /**

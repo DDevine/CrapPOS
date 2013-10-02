@@ -3,24 +3,39 @@ package au.edu.griffith.ict;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu implements Manager{
-    //This would be so much easier with an array list.
-    private MenuItem[] menuItems = new MenuItem[3]; // Use menuItem.getNo() as UNIQUE ID here.
+	/**
+	 * A map of ItemIDNumber to MenuItem
+	 */
+	private HashMap<Integer, MenuItem> menuItems = new HashMap<Integer, MenuItem>();
+	
+	/**
+	 * The next ID number which can be used in the menu
+	 */
     private int nextIDNo;
+    
+    /**
+     * The file to read/write this menu to/from
+     */
     private File file;
     
-    //Why the hell does our UML have a price field in the MENU for?\
-    
+    /**
+     * Fetches the item with the given unique ID
+     * @param itemNo The item number to search for.
+     * @return The item number, or null if it was not found.
+     */
     public MenuItem getItem(int itemNo){
-        //Error checking
-        if(menuItems.length <= itemNo || itemNo < 0){
-            return null;
-        }
-        return menuItems[itemNo];
+       return menuItems.get(itemNo);
     }
     
+    /**
+     * Saves this menu to disk.
+     * @param item The item that was modified.
+     */
     public void updateItem(MenuItem item){
         this.save();
     }
@@ -44,16 +59,8 @@ public class Menu implements Manager{
                     
                     MenuItem item = new MenuItem(id, name, price);
                     
-                    if(menuItems.length <= item.getItemNo()){
-                        //Resize the array
-                        MenuItem[] newItems = new MenuItem[item.getItemNo() + 10]; //10 = magic number.
-                        System.arraycopy(menuItems, 0, newItems, 0, menuItems.length);
-                        this.menuItems = newItems;
-                    }
+                    menuItems.put(item.getItemNo(), item);
                     
-                    menuItems[item.getItemNo()] = item;
-                    
-                    //There should be a better way of doing this, without item numbers. (Eg a freaking list)
                     nextIDNo = Math.max(nextIDNo, item.getItemNo() + 1);
                 }
                 catch(Exception e){
@@ -70,13 +77,15 @@ public class Menu implements Manager{
         return true;
     }
     
+    /**
+     * Saves this menu to file 
+     */
     private void save(){
         try{
             PrintStream ps = new PrintStream(file);
-            for(int i = 0; i < menuItems.length; i++){
-                if(menuItems[i] == null) continue; //Skip null items.
-                MenuItem it = menuItems[i];
-                ps.print(it.getItemNo() + "--");
+            for(MenuItem it : menuItems.values()){
+            	if(it == null) continue;
+            	ps.print(it.getItemNo() + "--");
                 ps.print(it.getName() + "--");
                 ps.print(it.getPrice() + "--");
                 ps.println();
@@ -89,40 +98,48 @@ public class Menu implements Manager{
         }
     }
 
+    /**
+     * Registers a new MenuItem on this menu.
+     * @param item The item to register
+     */
     public void newItem(MenuItem item){
-        if(menuItems.length <= item.getItemNo()){
-            //Resize the array
-            MenuItem[] newItems = new MenuItem[item.getItemNo() + 10]; //10 = magic number.
-            System.arraycopy(menuItems, 0, newItems, 0, menuItems.length);
-            this.menuItems = newItems;
-        }
-        menuItems[item.getItemNo()] = item;
+    	menuItems.put(item.getItemNo(), item);
         this.save();
     }
     
+    /**
+     * The next menu item's unique ID. Call this method
+     * when creating a new menu item.
+     * @return The menu item's ID
+     */
     public int nextItemNo(){
         return nextIDNo++;
     }
-    public int getItems(){
-        return nextIDNo - 1;
-    }
 
-    
+    /**
+     * Removes the item with the given item number from the menu.
+     * @param itemNo The unique ID of the item to remove
+     * @return true on success, false if the item was not on the menu.
+     */
     public boolean removeItem(int itemNo){
-        if(itemNo < 0 || itemNo >= menuItems.length || menuItems[itemNo] == null){
-            return false;
+        if(menuItems.remove(itemNo) != null){
+        	this.save();
+            return true;
         }
-        menuItems[itemNo] = null;
-        this.save();
-        return true;
+        return false; //Not in the item list
     }
     
+    /**
+     * Returns a text representation of the menu in the format:
+     * ID	Item	Price
+     * 0	Pizza	$9.50
+     * 1	Apples	$0.30
+     */
     @Override
     public String toString(){
     	StringBuilder sb = new StringBuilder();
     	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
-        for(int i = 0; i < getItems(); i++){
-            MenuItem item = getItem(i);
+    	for(MenuItem item : menuItems.values()){
             if(item == null) continue;
             sb.append(String.format("%-3d %-20.20s $%.2f\n", item.getItemNo(), item.getName(), item.getPrice()));
         }

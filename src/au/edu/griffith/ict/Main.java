@@ -1,5 +1,6 @@
 package au.edu.griffith.ict;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -29,7 +30,20 @@ public class Main {
     /** The Main method. */
     public static void main(String[] args){
         System.out.println("Hello World");
-    }    
+        new Main();
+    }
+    public Main(){
+    	customers = new CustomerManager();
+    	menu = new Menu();
+    	orders = new LinkedList<Order>();
+    	users = new HashMap<Integer, User>();
+    	String cwd = System.getProperty("user.dir");
+    	menu.loadDatabase(cwd + File.separatorChar + "menu.txt");
+    	customers.loadDatabase(cwd + File.separator + "customers.txt");
+    	
+    	//TODO: We need the login system and loads more here.
+    	Order o = buildOrder();
+    }
 
     /**
     * Adds an Order to the list of orders.
@@ -77,48 +91,72 @@ public class Main {
     * @return An initialised Order object.
     */
     private Order buildOrder(){
-        Order
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Customer Phone #: ");
+        String phone = sc.nextLine();
+        Customer c = customers.get(phone);
+        if(c == null){
+        	System.out.println("Creating new customer.");
+        	System.out.print("Name: ");
+        	String name = sc.nextLine();
+        	System.out.print("Address: ");
+        	String address = sc.nextLine();
+        	c = new Customer(phone, address, name);
+        }
+        
+        Order o = new Order(c);
+        
+        displayMenu();
+        System.out.println("Please select the menu items from above.");
+        System.out.println("Enter a blank line once completed.");
+        System.out.print("Item ID: ");
+        String s = sc.nextLine();
+        while(s.isEmpty() == false){
+        	
+        	
+        	try{
+        		MenuItem item = menu.getItem(Integer.parseInt(s));
+        		System.out.print("Quantity: ");
+        		s = sc.nextLine();
+        		int amount = Integer.parseInt(s);
+        		
+        		System.out.print("Confirm (Y/N) " + item.toString() + " x" + amount + "?: ");
+        		s = sc.nextLine();
+        		if(s.equalsIgnoreCase("Y") == false){
+        			System.out.println("Item cancelled.");
+        			continue;
+        		}
+        		else{
+        			o.add(item, amount);
+        			System.out.println("Item added.");
+        		}
+        	}
+        	catch(NumberFormatException e){
+        		System.out.println("Invalid number given: " + s);
+        	}
+        	System.out.print("Item ID: ");
+        	s = sc.nextLine();
+        }
+        System.out.print("Delivery (Y/N)?: ");
+        s = sc.nextLine();
+        //TODO: We need a method to set the order as delivery
+        
+        System.out.print("Cash (Y/N)?: ");
+        s = sc.nextLine();
+        o.setIsCash(s.equalsIgnoreCase("Y"));
+        System.out.println("Order completed.");
+        sc.close();
+        return o;
     }
     
     /** Prints the menu out to the user */
     private void displayMenu(){
+    	System.out.printf("%-3s %-20.20s Price\n", "ID", "Item");
         for(int i = 0; i < menu.getItems(); i++){
             MenuItem item = menu.getItem(i);
             if(item == null) continue;
-            System.out.printf("%.4f %.20s %.2f", item.getItemNo(), item.getName(), item.getPrice());
+            System.out.printf("%-3d %-20.20s $%.2f\n", item.getItemNo(), item.getName(), item.getPrice());
         }
-    }
-    
-    /** 
-     * Requests the user to input a new menu item
-     * @return Displays the menu to the user and requests they enter an item.
-     * Returns null if there is no new item.
-     */
-    private MenuItem requestItem(){
-        System.out.println("Please select a menu item. To cancel, just press enter.");
-        displayMenu();
-        System.out.println("Menu item ID: ");
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        sc.close();
-        if(s.isEmpty()) return null;
-        try{
-            MenuItem item = menu.getItem(Integer.parseInt(s));
-            return item;
-        }
-        catch(NumberFormatException e){
-            System.out.println(s + " is not a valid number! Cancelling.");
-        }
-        return null;
-    }
-    
-    /** Requests the user input a new integer
-     * @return The int they entered    
-     */
-    private int requestNumber(){
-        Scanner sc = new Scanner(System.in);
-        int i = sc.nextInt();
-        sc.close();
-        return i;
     }
 }

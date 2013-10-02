@@ -107,126 +107,214 @@ public class Main {
 	        while(user != null){
 	        	System.out.println();
 		        System.out.println("What do you wish to do?");
-		        System.out.println("=== Customer Handling ===");
-		        System.out.println("Create Order (C)");
-		        System.out.println("List Orders (L)");
-		        
-		        System.out.println("=== Menu Handling ===");
-		        System.out.println("Add Menu Item (MA)");
-		        System.out.println("Remove Menu Item (MR)");
-		        
-		        System.out.println("=== User Handling ===");
-		        System.out.println("Logout (Q)");
-		        System.out.println("Create User (UC)"); //Not implemented
-		        System.out.println("Delete User (UD)"); //Not implemented
-		        System.out.println("Edit User (UE)"); //Not implemented
+		        System.out.println("Order handling (O)");
+		        System.out.println("Menu Handling (M)");
+		        System.out.println("User Handling (U)");
 		        System.out.print("Option: ");
 		        
 		        String s = sc.nextLine();
+		        System.out.println();
 		        
-		        if(s.equalsIgnoreCase("C")){
-		        	Order o = buildOrder();
-		        	this.addOrder(o);
-		            dayTotal += o.getTotal();
-		            System.out.println("Order registered: " + o.toString());
-		        }
-		        else if(s.equalsIgnoreCase("L")){
-		        	System.out.println("Orders (" + orders.size() + "):");
-		        	for(Order o : orders){
-		        		System.out.println(o.toString());
+		        if(s.isEmpty()) continue;
+		        
+		        s = s.substring(0, 1).toUpperCase();
+		        
+		        if(s.equals("O")){
+		        	System.out.println("=== Customer Handling ===");
+			        System.out.println("Create Order (C)");
+			        System.out.println("List Orders (L)");
+			        System.out.println("Close Order (F)");
+			        System.out.println("Delete Orders (D)");
+			        System.out.print("Option: ");
+			        
+		        	s = sc.nextLine().substring(0, 1).toUpperCase();
+		        	System.out.println();
+		        	if(s.equals("C")){
+		        		Order o = buildOrder();
+			        	this.addOrder(o);
+			            dayTotal += o.getTotal();
+			            System.out.println("Order #" + orders.indexOf(o) + " added: \n" + o.toString());
 		        	}
-		        }
-		        else if(s.equalsIgnoreCase("MA")){
-		        	try{
-		        		//Add a menu item.
-			        	System.out.print("Item Name: ");
-			        	String name = sc.nextLine();
-			        	System.out.print("Item Price: $");
-			        	float price = Float.parseFloat(sc.nextLine());
-			        	
-			        	MenuItem item = new MenuItem(menu.nextItemNo(), name, price);
-			        	menu.newItem(item);
-			        	System.out.println("New item added: " + item.toString());
-		        	}
-		        	catch(NumberFormatException e){
-		        		System.out.println("Invalid number supplied.");
-		        	}
-		        }
-		        else if(s.equalsIgnoreCase("MR")){
-		        	try{
-		        		//Add a menu item.
-			        	System.out.print("Item ID: ");
-			        	String st = sc.nextLine();
-			        	int id = Integer.parseInt(st);
-			        	if(menu.removeItem(id) == false){
-			        		System.out.println("Item ID " + st + " not found.");
-			        	}
-			        	else{
-			        		System.out.println("Success.");
+		        	else if(s.equals("L")){
+		        		System.out.println("Orders (" + orders.size() + "):");
+			        	for(int i = 0; i < orders.size(); i++){
+			        		Order o = orders.get(i);
+			        		System.out.println("Order #" + i + ":\n" + o.toString());
 			        	}
 		        	}
-		        	catch(NumberFormatException e){
-		        		System.out.println("Invalid number supplied.");
-		        	}
-		        }
-		        else if(s.equalsIgnoreCase("UC")){
-		        	//Create user
-		        	try{
-			        	System.out.print("User ID: ");
-			        	int id = Integer.parseInt(sc.nextLine());
-			        	System.out.print("Password: ");
-			        	String pass = sc.nextLine();
-			        	System.out.print("Give Admin Rights? (Y/N): ");
-			        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
-			        	User u = new User(id, pass, isAdmin);
-			        	users.put(u.getStaffNo(), u);
-			        	System.out.println("User created!");
-		        	}
-		        	catch(NumberFormatException e){
-		        		System.out.println("Invalid User ID supplied.");
-		        	}
-		        }
-		        else if(s.equalsIgnoreCase("UD")){
-		        	System.out.print("Delete User ID: ");
-		        	try{
-		        		int id = Integer.parseInt(sc.nextLine());
-		        		if(users.remove(id) != null){
-		        			System.out.println("Deletion success.");
+		        	else if(s.equals("F")){
+		        		try{
+		        			System.out.println("Orders (" + orders.size() + "):");
+				        	for(int i = 0; i < orders.size(); i++){
+				        		Order o = orders.get(i);
+				        		System.out.println("Order #" + i + ":\n" + o.toString());
+				        	}
+		        			System.out.print("Close order #: ");
+		        			int id = Integer.parseInt(sc.nextLine());
+		        			if(id < 0 || id >= orders.size()){
+		        				System.out.println("Invalid order requested.");
+		        				continue;
+		        			}
+		        			Order o = orders.get(id);
+		        			o.close();
+		        			System.out.println("Order closed.");
 		        		}
-		        		else{
-		        			System.out.println("User not found.");
-		        		}
-		        	}
-		        	catch(NumberFormatException e){
-		        		System.out.println("Invalid ID specified!");
-		        	}
-		        }
-		        else if(s.equalsIgnoreCase("UE")){
-		        	System.out.print("Edit User ID: ");
-		        	try{
-		        		int id = Integer.parseInt(sc.nextLine());
-		        		if(users.containsKey(id) == false){ //No such user
-		        			System.out.println("Invalid user ID specified!");
+		        		catch(NumberFormatException e){
+		        			System.out.println("Invalid ID given.");
 		        			continue;
 		        		}
-		        		
-		        		System.out.print("New Password: ");
-			        	String pass = sc.nextLine();
-			        	System.out.print("Give Admin Rights? (Y/N): ");
-			        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
-			        	User u = new User(id, pass, isAdmin);
-			        	users.put(u.getStaffNo(), u);
-			        	System.out.println("User modified!");
 		        	}
-		        	catch(NumberFormatException e){
-		        		System.out.println("Invalid ID specified!");
+		        	else if(s.equals("D")){
+		        		try{
+		        			System.out.println("Orders (" + orders.size() + "):");
+				        	for(int i = 0; i < orders.size(); i++){
+				        		Order o = orders.get(i);
+				        		System.out.println("Order #" + i + ":\n" + o.toString());
+				        	}
+		        			System.out.print("Delete/Remove order #: ");
+		        			int id = Integer.parseInt(sc.nextLine());
+		        			if(id < 0 || id >= orders.size()){
+		        				System.out.println("Invalid order requested.");
+		        				continue;
+		        			}
+		        			Order o = orders.remove(id);
+		        			o.close();
+		        			System.out.println("Order closed & Deleted.");
+		        		}
+		        		catch(NumberFormatException e){
+		        			System.out.println("Invalid ID given.");
+		        			continue;
+		        		}
+		        	}
+		        	else{
+		        		System.out.println("Unrecognised command.");
+		        		continue;
 		        	}
 		        }
-		        else if(s.equalsIgnoreCase("Q")){
-		        	user = null;
+		        else if(s.equals("M")){
+		        	System.out.println("=== Menu Handling ===");
+			        System.out.println("Add Menu Item (A)");
+			        System.out.println("Remove Menu Item (R)");
+			        System.out.println("Display Menu (L)");
+			        System.out.print("Option: ");
+			        
+		        	s = sc.nextLine().substring(0, 1).toUpperCase();
+		        	System.out.println();
+		        	if(s.equals("A")){
+		        		try{
+			        		//Add a menu item.
+				        	System.out.print("Item Name: ");
+				        	String name = sc.nextLine();
+				        	System.out.print("Item Price: $");
+				        	float price = Float.parseFloat(sc.nextLine());
+				        	
+				        	MenuItem item = new MenuItem(menu.nextItemNo(), name, price);
+				        	menu.newItem(item);
+				        	System.out.println("New item added: " + item.toString());
+			        	}
+			        	catch(NumberFormatException e){
+			        		System.out.println("Invalid number supplied.");
+			        	}
+		        	}
+		        	else if(s.equals("R")){
+		        		try{
+			        		//Add a menu item.
+				        	System.out.print("Item ID: ");
+				        	String st = sc.nextLine();
+				        	int id = Integer.parseInt(st);
+				        	if(menu.removeItem(id) == false){
+				        		System.out.println("Item ID " + st + " not found.");
+				        	}
+				        	else{
+				        		System.out.println("Success.");
+				        	}
+			        	}
+			        	catch(NumberFormatException e){
+			        		System.out.println("Invalid number supplied.");
+			        	}
+		        	}
+		        	else if(s.equals("L")){
+		        		System.out.println(menu.toString());
+		        	}
+		        	else{
+		        		System.out.println("Unrecognised command.");
+		        		continue;
+		        	}
+		        }
+		        else if(s.equals("U")){
+		        	System.out.println("=== User Handling ===");
+			        System.out.println("Logout (Q)");
+			        System.out.println("Create User (C)");
+			        System.out.println("Delete User (D)"); 
+			        System.out.println("Edit User (E)"); 
+			        System.out.print("Option: ");
+			        
+		        	s = sc.nextLine().substring(0, 1).toUpperCase();
+		        	System.out.println();
+		        	if(s.equals("C")){
+		        		//Create user
+			        	try{
+				        	System.out.print("User ID: ");
+				        	int id = Integer.parseInt(sc.nextLine());
+				        	System.out.print("Password: ");
+				        	String pass = sc.nextLine();
+				        	System.out.print("Give Admin Rights? (Y/N): ");
+				        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
+				        	User u = new User(id, pass, isAdmin);
+				        	users.put(u.getStaffNo(), u);
+				        	System.out.println("User created!");
+			        	}
+			        	catch(NumberFormatException e){
+			        		System.out.println("Invalid User ID supplied.");
+			        	}
+		        	}
+		        	else if(s.equals("D")){
+		        		System.out.print("Delete User ID: ");
+			        	try{
+			        		int id = Integer.parseInt(sc.nextLine());
+			        		if(users.remove(id) != null){
+			        			System.out.println("Deletion success.");
+			        		}
+			        		else{
+			        			System.out.println("User not found.");
+			        		}
+			        	}
+			        	catch(NumberFormatException e){
+			        		System.out.println("Invalid ID specified!");
+			        	}
+		        	}
+		        	else if(s.equals("E")){
+		        		System.out.print("Edit User ID: ");
+			        	try{
+			        		int id = Integer.parseInt(sc.nextLine());
+			        		if(users.containsKey(id) == false){ //No such user
+			        			System.out.println("Invalid user ID specified!");
+			        			continue;
+			        		}
+			        		
+			        		System.out.print("New Password: ");
+				        	String pass = sc.nextLine();
+				        	System.out.print("Give Admin Rights? (Y/N): ");
+				        	boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
+				        	User u = new User(id, pass, isAdmin);
+				        	users.put(u.getStaffNo(), u);
+				        	System.out.println("User modified!");
+			        	}
+			        	catch(NumberFormatException e){
+			        		System.out.println("Invalid ID specified!");
+			        	}
+		        	}
+		        	else if(s.equals("Q")){
+		        		user = null;
+		        	}
+		        	else{
+		        		System.out.println("Unrecognised command.");
+		        		continue;
+		        	}
 		        }
 		        else{
-		        	System.out.println("Operation not known: " + s);
+		        	System.out.println("Unrecognised command.");
+	        		continue;
 		        }
 	        }
         }

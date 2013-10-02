@@ -77,36 +77,104 @@ public class Main {
         }
         //End loading users
         
-        //Begin login system
-        User user = null;
-        while(user == null){
-            System.out.print("User ID: ");
-            try{
-                user = users.get(Integer.parseInt(sc.nextLine()));
-                if(user == null){
-                    System.out.println("No such user found!");
-                    continue;
-                }
-                
-                System.out.print("Password: ");
-                String pass = sc.nextLine();
-                if(pass.equals(user.getPassword()) == false){
-                    System.out.println("Password incorrect.");
-                    user = null;
-                    continue;
-                }
-            }
-            catch(NumberFormatException e){
-                System.out.println("Invalid user ID# given!");
-            }
+        while(true){
+	        //Begin login system
+	        User user = null;
+	        while(user == null){
+	            System.out.print("User ID: ");
+	            try{
+	                user = users.get(Integer.parseInt(sc.nextLine()));
+	                if(user == null){
+	                    System.out.println("No such user found!");
+	                    continue;
+	                }
+	                
+	                System.out.print("Password: ");
+	                String pass = sc.nextLine();
+	                if(pass.equals(user.getPassword()) == false){
+	                    System.out.println("Password incorrect.");
+	                    user = null;
+	                    continue;
+	                }
+	            }
+	            catch(NumberFormatException e){
+	                System.out.println("Invalid user ID# given!");
+	            }
+	        }
+	        System.out.println("Logged in as user #" + user.getStaffNo() + ".");
+	        //End login system
+	        
+	        while(user != null){
+	        	System.out.println();
+		        System.out.println("What do you wish to do?");
+		        System.out.println("=== Customer Handling ===");
+		        System.out.println("Create Order (C)");
+		        System.out.println("List Orders (L)");
+		        
+		        System.out.println("=== Menu Handling ===");
+		        System.out.println("Add Menu Item (MA)");
+		        System.out.println("Remove Menu Item (MR)");
+		        
+		        System.out.println("=== User Handling ===");
+		        System.out.println("Logout (Q)");
+		        System.out.print("Option: ");
+		        String s = sc.nextLine();
+		        
+		        if(s.equalsIgnoreCase("C")){
+		        	Order o = buildOrder();
+		        	this.addOrder(o);
+		            dayTotal += o.getTotal();
+		            System.out.println("Order registered: " + o.toString());
+		        }
+		        else if(s.equalsIgnoreCase("L")){
+		        	System.out.println("Orders (" + orders.size() + "):");
+		        	for(Order o : orders){
+		        		System.out.println(o.toString());
+		        	}
+		        }
+		        else if(s.equalsIgnoreCase("MA")){
+		        	try{
+		        		//Add a menu item.
+			        	System.out.print("Item Name: ");
+			        	String name = sc.nextLine();
+			        	System.out.print("Item Price: $");
+			        	float price = Float.parseFloat(sc.nextLine());
+			        	
+			        	MenuItem item = new MenuItem(menu.nextItemNo(), name, price);
+			        	menu.newItem(item);
+			        	System.out.println("New item added: " + item.toString());
+		        	}
+		        	catch(NumberFormatException e){
+		        		System.out.println("Invalid number supplied.");
+		        	}
+		        }
+		        else if(s.equalsIgnoreCase("MR")){
+		        	try{
+		        		//Add a menu item.
+			        	System.out.print("Item ID: ");
+			        	String st = sc.nextLine();
+			        	int id = Integer.parseInt(st);
+			        	if(menu.removeItem(id) == false){
+			        		System.out.println("Item ID " + st + " not found.");
+			        	}
+			        	else{
+			        		System.out.println("Success.");
+			        	}
+		        	}
+		        	catch(NumberFormatException e){
+		        		System.out.println("Invalid number supplied.");
+		        	}
+		        }
+		        
+		        else if(s.equalsIgnoreCase("Q")){
+		        	user = null;
+		        }
+		        else{
+		        	System.out.println("Operation not known: " + s);
+		        }
+	        }
         }
-        System.out.println("Logged in as user #" + user.getStaffNo() + ".");
-        //End login system
         
-        Order o = buildOrder();
-        
-        this.addOrder(o);
-        dayTotal += o.getTotal();
     }
 
     /**
@@ -214,7 +282,7 @@ public class Main {
         }
         System.out.print("Delivery (Y/N)?: ");
         s = sc.nextLine();
-        //TODO: We need a method to set the order as delivery
+        o.setIsDelivery(s.equalsIgnoreCase("Y"));
         
         System.out.print("Cash (Y/N)?: ");
         s = sc.nextLine();

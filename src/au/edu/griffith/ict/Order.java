@@ -142,13 +142,6 @@ public class Order{
     }
     
     /**
-    * Get the string representation of the order.
-    */
-    public String toString(){
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-    
-    /**
     * Return whether the order has been closed or not.
     */
     public boolean getClosed(){
@@ -175,5 +168,32 @@ public class Order{
     */
     public boolean getIsCash(){
         return isCash;
+    }
+    
+    /**
+     * A string representation of this order.
+     * This is returned in the format:
+     * 
+     */
+    @Override
+    public String toString(){
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("Customer: " + cust.getPhoneNo());
+    	sb.append("=======");
+    	sb.append("\nItems:\n");
+    	
+    	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
+    	float total = 0;
+    	for(MenuItem item : items.keySet()){
+            if(item == null) continue;
+            int amount = items.get(item);
+            sb.append(String.format("%-3d %-20.20s $%-3.2f\n x%d", item.getItemNo(), item.getName(), item.getPrice(), amount));
+            total += amount * item.getPrice();
+        }
+    	sb.append("=======");
+    	sb.append(String.format("Total: %.2f", total));
+    	
+    	
+    	return sb.toString();
     }
 }

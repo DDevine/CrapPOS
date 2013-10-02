@@ -10,19 +10,34 @@ public class Main {
 	// itemManager: Menu
 	// orders: Order[*]
 	// users: User[*]
+	
+	/** A reference to the Customer Manager*/
 	private CustomerManager customers;
+	
+	/** A reference to the Menu */
 	private Menu menu;
+	
+	/** A non-persistent list of Orders */
 	private LinkedList<Order> orders;
+	
+	/** A non-presistent list of Users */
 	private HashMap<Integer, User> users;
+	
+	/** A running total of the day's takings. A day is considered to be the time since the program started. */
 	private float dayTotal; //This wasn't in the design docs.
 
+    /** The Main method. */
 	public static void main(String[] args){
 		System.out.println("Hello World");
 	}	
 
-	//void addOrder(Order order){
-		// Adds an order to the database/array
-	//}
+	/**
+	* Adds an Order to the list of orders.
+	* @param order The Order to add to the list.
+	*/
+	public void addOrder(Order order){
+		throw new UnsupportedOperationException("Not implemented yet.");
+	}
 	
 	//void removeOrder(Order order){
 		// Removes an Order from the database/array

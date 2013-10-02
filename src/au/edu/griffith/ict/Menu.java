@@ -152,4 +152,16 @@ public class Menu implements Manager{
         this.save();
         return true;
     }
+    
+    @Override
+    public String toString(){
+    	StringBuilder sb = new StringBuilder();
+    	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
+        for(int i = 0; i < getItems(); i++){
+            MenuItem item = getItem(i);
+            if(item == null) continue;
+            sb.append(String.format("%-3d %-20.20s $%.2f\n", item.getItemNo(), item.getName(), item.getPrice()));
+        }
+        return sb.toString();
+    }
 }

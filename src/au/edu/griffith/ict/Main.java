@@ -23,7 +23,7 @@ public class Main {
     /** A non-presistent list of Users */
     private HashMap<Integer, User> users;
     
-    /** A running total of the day's takings. A day is considered to be the time since the program started. */
+    /** A running total of the day's takings. */
     private float dayTotal; //This wasn't in the design docs.
 
     /** The Main method. */
@@ -39,24 +39,46 @@ public class Main {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
     
-    //void removeOrder(Order order){
-        // Removes an Order from the database/array
-    //}
+    /**
+    * Removes an order from the list of orders, effectively deleting the order.
+    * @param order The order to be removed.
+    */
+    public void removeOrder(Order order){
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 
-    //Order[]  getOrders(Customer customer){
-        // Gets an array of Order objects for a given Customer.
-    //}
+    /**
+    * Gets an array of orders that belong to a given customer.
+    * @param customer The customer to query for.
+    * @return An array of Order objects.
+    */
+    public Order[]  getOrders(Customer customer){
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
 
-    //float getDayTotal(){
-        // Return the total takings for the day... 
-    //}
+    /**
+    * Get the total takings for the day. 
+    * A day is considered to be the time since the program started.
+    * @return A float representing the day's takings.
+    */
+    public float getDayTotal(){
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
     
-    //void display(){
-        // Display... what?
-    //}
-    /*private Order buildOrder(){
+    /**
+    * Display the answer to the meaning of life (42).
+    */
+    public void display(){
+        throw new UnsupportedOperationException("Not implemented yet.");
+    }
+    
+    /**
+    * An Order factory.
+    * @return An initialised Order object.
+    */
+    private Order buildOrder(){
         Order
-    }*/
+    }
     
     /** Prints the menu out to the user */
     private void displayMenu(){

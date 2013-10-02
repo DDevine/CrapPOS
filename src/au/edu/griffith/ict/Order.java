@@ -192,6 +192,9 @@ public class Order{
         }
     	sb.append("=======");
     	sb.append(String.format("Total: %.2f", total));
+    	sb.append("Delivered: " + (delivery ? "Y" : "N"));
+    	sb.append("Cash: " + (isCash ? "Y" : "N"));
+    	sb.append("Closed: " + (isClosed ? "Y" : "N"));
     	
     	
     	return sb.toString();

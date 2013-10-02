@@ -61,6 +61,14 @@ public class Order{
     }
     
     /**
+     * Sets the delivery status of this order (Whether it is to be delivered or not)
+     * @param deliver Whether the order is to be delivered
+     */
+    public void setIsDelivery(boolean deliver){
+    	this.delivery = deliver;
+    }
+    
+    /**
     * Add a number of MenuItems to the order.
     * @param item       A MenuItem object to be added.
     * @param quantity   The number of the MenuItem to be added.

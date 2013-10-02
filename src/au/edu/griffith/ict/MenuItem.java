@@ -48,4 +48,9 @@ public class MenuItem{
     public int getItemNo(){
         return itemNo;
     }
+    
+    @Override
+    public String toString(){
+    	return itemNo + ": " + name + "...$" + price;
+    }
 }

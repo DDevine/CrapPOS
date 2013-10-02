@@ -187,7 +187,7 @@ public class Order{
     	for(MenuItem item : items.keySet()){
             if(item == null) continue;
             int amount = items.get(item);
-            sb.append(String.format("%-3d %-20.20s $%-3.2f\n x%d", item.getItemNo(), item.getName(), item.getPrice(), amount));
+            sb.append(String.format("%-3d %-20.20s $%-3.2f x%d\n", item.getItemNo(), item.getName(), item.getPrice(), amount));
             total += amount * item.getPrice();
         }
     	sb.append("=======");

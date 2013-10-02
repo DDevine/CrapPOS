@@ -1,6 +1,7 @@
 package au.edu.griffith.ict;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -11,6 +12,8 @@ public class Main {
     // itemManager: Menu
     // orders: Order[*]
     // users: User[*]
+	
+	
     
     /** A reference to the Customer Manager*/
     private CustomerManager customers;
@@ -32,17 +35,81 @@ public class Main {
         System.out.println("Hello World");
         new Main();
     }
+    
+    /** The input for the program */
+    private Scanner sc;
     public Main(){
+    	sc = new Scanner(System.in);
     	customers = new CustomerManager();
     	menu = new Menu();
     	orders = new LinkedList<Order>();
     	users = new HashMap<Integer, User>();
     	String cwd = System.getProperty("user.dir");
     	menu.loadDatabase(cwd + File.separatorChar + "menu.txt");
-    	customers.loadDatabase(cwd + File.separator + "customers.txt");
+        customers.loadDatabase(cwd + File.separator + "customers.txt");
+        
+        //Begin loading users file
+        File usersFile = new File(cwd + File.separator + "users.txt");
+        try{
+	        usersFile.createNewFile();
+	        Scanner userSc = new Scanner(usersFile);
+	        while(userSc.hasNextLine()){
+	        	String s = userSc.nextLine();
+	        	try{
+	        		//USERID--Password--isAdmin
+		        	String[] data = s.split("--");
+		        	int id = Integer.parseInt(data[0]);
+		        	String pass = data[1];
+		        	boolean isAdmin = data[2].equalsIgnoreCase("Y");
+		        	User u = new User(id, pass, isAdmin);
+		        	users.put(u.getStaffNo(), u);
+	        	}
+	        	catch(Exception e){
+	        		System.out.println("Error loading user: " + s + ", continuing");
+	        		continue;
+	        	}
+	        }
+	        userSc.close();
+        }
+        catch(IOException e){
+        	e.printStackTrace();
+        	return;
+        }
+        //End loading users
+        
+        //Begin login system
+        User user = null;
+        while(user == null){
+            System.out.println("User ID: ");
+            try{
+                user = users.get(Integer.parseInt(sc.nextLine()));
+                if(user == null){
+                    System.out.println("No such user found!");
+                    continue;
+                }
+                
+                System.out.print("Password: ");
+                String pass = sc.nextLine();
+                if(pass.equals(user.getPassword()) == false){
+                    System.out.println("Password incorrect.");
+                    user = null;
+                    continue;
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("Invalid user ID# given!");
+            }
+        }
+        System.out.println("Logged in as user #" + user.getStaffNo() + ".");
+        //End login system
+        
+    	
     	
     	//TODO: We need the login system and loads more here.
     	Order o = buildOrder();
+    	
+    	this.addOrder(o);
+    	dayTotal += o.getTotal();
     }
 
     /**
@@ -91,8 +158,6 @@ public class Main {
     * @return An initialised Order object.
     */
     private Order buildOrder(){
-        Scanner sc = new Scanner(System.in);
-        
         System.out.print("Customer Phone #: ");
         String phone = sc.nextLine();
         Customer c = customers.get(phone);
@@ -146,7 +211,6 @@ public class Main {
         s = sc.nextLine();
         o.setIsCash(s.equalsIgnoreCase("Y"));
         System.out.println("Order completed.");
-        sc.close();
         return o;
     }
     

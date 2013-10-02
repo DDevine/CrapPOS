@@ -3,7 +3,6 @@ package au.edu.griffith.ict;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -13,36 +12,40 @@ public class Menu implements Manager{
 	 */
 	private HashMap<Integer, MenuItem> menuItems = new HashMap<Integer, MenuItem>();
 	
-	/**
-	 * The next ID number which can be used in the menu
-	 */
+    /** 
+     * Keeps track of the next available ID number 
+     */
     private int nextIDNo;
     
     /**
-     * The file to read/write this menu to/from
+     * A reference to the file that the menu is serialised to and deserialised from. 
      */
     private File file;
     
-    /**
-     * Fetches the item with the given unique ID
-     * @param itemNo The item number to search for.
-     * @return The item number, or null if it was not found.
-     */
+    /** 
+    * Get a MenuItem from the menu identified by it's item number.
+    * @param itemNo The identifier for a particular item.
+    * @return A MenuItem object that matches the identifier, else null.
+    */
     public MenuItem getItem(int itemNo){
-       return menuItems.get(itemNo);
-    }
+        return menuItems.get(itemNo);
+     }
     
     /**
-     * Saves this menu to disk.
-     * @param item The item that was modified.
-     */
+    * This method does not make sense.
+    */
     public void updateItem(MenuItem item){
         this.save();
     }
     
+    /**
+    * Deserialise a Menu from a database given a file to use as a database.
+    * @param file The file to use as the database.
+    * @return Return True if the database was found and successfully loaded.
+    */
     @Override
     public boolean loadDatabase(String file) {
-        try{
+    	try{
             this.file = new File(file);
             this.file.createNewFile();
             
@@ -78,49 +81,48 @@ public class Menu implements Manager{
     }
     
     /**
-     * Saves this menu to file 
-     */
+    * Serialise the MenuItems on the Menu and write them to the database.
+    */
     private void save(){
-        try{
-            PrintStream ps = new PrintStream(file);
-            for(MenuItem it : menuItems.values()){
-            	if(it == null) continue;
-            	ps.print(it.getItemNo() + "--");
-                ps.print(it.getName() + "--");
-                ps.print(it.getPrice() + "--");
-                ps.println();
-            }
-            ps.close();
-        }
-        catch(IOException e){
-            //Irrecoverable error
-            e.printStackTrace();
-        }
+    	 try{
+             PrintStream ps = new PrintStream(file);
+             for(MenuItem it : menuItems.values()){
+             	if(it == null) continue;
+             	ps.print(it.getItemNo() + "--");
+                 ps.print(it.getName() + "--");
+                 ps.print(it.getPrice() + "--");
+                 ps.println();
+             }
+             ps.close();
+         }
+         catch(IOException e){
+             //Irrecoverable error
+             e.printStackTrace();
+         }
     }
 
     /**
-     * Registers a new MenuItem on this menu.
-     * @param item The item to register
-     */
+    * Add a new item to the menu.
+    * @param item The item to be added to the menu.
+    */
     public void newItem(MenuItem item){
     	menuItems.put(item.getItemNo(), item);
         this.save();
     }
     
     /**
-     * The next menu item's unique ID. Call this method
-     * when creating a new menu item.
-     * @return The menu item's ID
-     */
+    * Increment and return the next available Item ID number.
+    * @return An int representing the next unused item ID number.
+    */
     public int nextItemNo(){
         return nextIDNo++;
     }
 
     /**
-     * Removes the item with the given item number from the menu.
-     * @param itemNo The unique ID of the item to remove
-     * @return true on success, false if the item was not on the menu.
-     */
+    * Remove an item from the menu.
+    * @param itemNo The item number of the item to be removed.
+    * @return Returns True if the item was successfully removed. If the item number does not exist within the menu it will return False.
+    */
     public boolean removeItem(int itemNo){
         if(menuItems.remove(itemNo) != null){
         	this.save();

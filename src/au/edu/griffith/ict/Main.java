@@ -3,6 +3,7 @@ package au.edu.griffith.ict;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -114,6 +115,7 @@ public class Main {
 		        System.out.println("Order handling (O)");
 		        if(user.isAdmin()) System.out.println("Menu Handling (M)");
 		        System.out.println("User Handling (U)");
+		        System.out.println("Sales Summary (S)");
 		        System.out.print("Option: ");
 		        
 		        String s = sc.nextLine();
@@ -383,6 +385,39 @@ public class Main {
 		        	else{
 		        		System.out.println("Unrecognised command.");
 		        		continue;
+		        	}
+		        }
+		        /*
+		         * Sales summary handling
+		         */
+		        else if(s.equals("S")){
+		        	System.out.printf("==== COES Sales Report ====\n");
+		        	System.out.printf("%-10s %10s %10s\n", "Date", "Sales #", "Total");
+		        	HashMap<String, LinkedList<Order>> data = new HashMap<String, LinkedList<Order>>();
+		        	for(Order o : this.orders){
+		        		LinkedList<Order> list = data.get(o.getCreationDate());
+		        		if(list == null){
+		        			list = new LinkedList<Order>();
+		        			data.put(o.getCreationDate(), list);
+		        		}
+		        		list.add(o);
+		        	}
+		        	
+		        	LinkedList<String> dates = new LinkedList<String>(data.keySet());
+		        	Collections.sort(dates);
+		        	
+		        	for(String k : dates){
+		        		LinkedList<Order> orders = data.get(k);
+		        		int sales = 0;
+		        		float total = 0;
+		        		for(Order o : orders){
+		        			sales++;
+		        			total += o.getTotal();
+		        		}
+		        		
+		        		System.out.printf("%10s ", k);
+		        		System.out.printf("%10d ", sales);
+		        		System.out.printf("$%8.2f\n", total);
 		        	}
 		        }
 		        else{

@@ -1,6 +1,8 @@
 package au.edu.griffith.ict;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Order{
 
@@ -37,7 +39,12 @@ public class Order{
     /**
      * NEW or PAID.
      */
-    private OrderStatus status;
+    private OrderStatus status = OrderStatus.NEW;
+    
+    /**
+     * The date the order was created. Formatted as yyyy-mm-dd (eg, 2012-07-25)
+     */
+    private String createdDate;
     
     /**
      * Creates a new order for the given customer.
@@ -188,6 +195,28 @@ public class Order{
      */
     public void setStatus(OrderStatus status){
     	this.status = status;
+    }
+    
+    /**
+     * The date that this order was created, in the format YYYY-MM-DD
+     * @return The date that this order was created, in the format YYYY-MM-DD
+     */
+    public String getCreationDate(){
+    	return createdDate;
+    }
+    
+    /**
+     * Sets the date this order was created, in the format YYYY-MM-DD
+     * @param date The date this order was created in the format YYYY-MM-DD
+     * @throws IllegalArgumentException if the date is not in the format YYYY-MM-DD
+     */
+    public void setCreationDate(String date){
+    	Pattern p = Pattern.compile("\\d\\d\\d\\d-[0-1]\\d-[0-3]\\d"); 
+    	Matcher m = p.matcher(date);
+    	if(m.matches() == false){
+    		throw new IllegalArgumentException("Invalid date given: " + date + ", must be of format yyyy-mm-dd.");
+    	}
+    	this.createdDate = date;
     }
     
     /**

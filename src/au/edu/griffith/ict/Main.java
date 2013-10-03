@@ -128,8 +128,9 @@ public class Main {
 		         * Order Menu
 		         */
 		        if(s.equals("O")){
-		        	System.out.println("=== Customer Handling ===");
+		        	System.out.println("=== Order Handling ===");
 			        System.out.println("Create Order (C)");
+			        System.out.println("Pay Order (P)");
 			        System.out.println("List Orders (L)");
 			        System.out.println("Close Order (F)");
 			        System.out.println("Delete Orders (D)");
@@ -151,6 +152,28 @@ public class Main {
 			        		Order o = orders.get(i);
 			        		System.out.println("Order #" + i + ":\n" + o.toString());
 			        	}
+		        	}
+		        	else if(s.equals("P")){
+		        		try{
+		        			System.out.println("Orders (" + orders.size() + "):");
+				        	for(int i = 0; i < orders.size(); i++){
+				        		Order o = orders.get(i);
+				        		System.out.println("Order #" + i + ":\n" + o.toString());
+				        	}
+		        			System.out.print("Pay order #: ");
+		        			int id = Integer.parseInt(sc.nextLine());
+		        			if(id < 0 || id >= orders.size()){
+		        				System.out.println("Invalid order requested.");
+		        				continue;
+		        			}
+		        			Order o = orders.get(id);
+		        			o.setStatus(OrderStatus.PAID);
+		        			System.out.println("Order status is now Paid.");
+		        		}
+		        		catch(NumberFormatException e){
+		        			System.out.println("Invalid ID given.");
+		        			continue;
+		        		}
 		        	}
 		        	else if(s.equals("F")){
 		        		try{
@@ -461,7 +484,20 @@ public class Main {
         
         Order o = new Order(c);
         
-        String s;
+        String s = null;
+        
+        while(s == null){
+        	System.out.print("Creation Date (YYYY-MM-DD): ");
+            s = sc.nextLine();
+            try{
+            	o.setCreationDate(s);
+            }
+            catch(IllegalArgumentException e){
+            	System.out.println("Invalid date supplied: " + e.getMessage());
+            	s = null; //Continue loop
+            }
+        }
+        
         System.out.print("Delivery (Y/N)?: ");
         s = sc.nextLine();
         o.setIsDelivery(s.equalsIgnoreCase("Y"));

@@ -7,7 +7,6 @@ public class Order{
     /** 
     * An order contains items - stored as an array of MenuItem objects.
     */    
-    //private MenuItem[] items;
     private HashMap<MenuItem, Integer> items = new HashMap<MenuItem, Integer>();
     
     /**
@@ -34,6 +33,11 @@ public class Order{
     * If True, the order is to be paid in cash.
     */
     private boolean isCash;
+    
+    /**
+     * NEW or PAID.
+     */
+    private OrderStatus status;
     
     /**
      * Creates a new order for the given customer.
@@ -168,6 +172,22 @@ public class Order{
     */
     public boolean getIsCash(){
         return isCash;
+    }
+    
+    /**
+     * Returns the status of this order (NEW, or PAID)
+     * @return the status of this order (NEW, or PAID)
+     */
+    public OrderStatus getStatus(){
+    	return status;
+    }
+    
+    /**
+     * Marks this order with the given status (NEW or PAID)
+     * @param status The status (NEW or PAID)
+     */
+    public void setStatus(OrderStatus status){
+    	this.status = status;
     }
     
     /**

@@ -191,7 +191,7 @@ public class Order{
             total += amount * item.getPrice();
         }
     	sb.append("=======\n");
-    	sb.append(String.format("Total: %.2f\n", total));
+    	sb.append(String.format("Total: $%.2f\n", total));
     	sb.append("Delivered: " + (delivery ? "Y" : "N"));
     	sb.append("\nCash: " + (isCash ? "Y" : "N"));
     	sb.append("\nClosed: " + (isClosed ? "Y" : "N"));

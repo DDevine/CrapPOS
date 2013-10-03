@@ -438,7 +438,7 @@ public class Main {
 	    	usersFile.createNewFile();
 	    	PrintStream ps = new PrintStream(usersFile);
 	    	for(User u : users.values()){
-	    		ps.printf("%i--%s--%c\n", u.getStaffNo(), u.getPassword(), (u.isAdmin() ? 'y' : 'n'));
+	    		ps.printf("%d--%s--%c\n", u.getStaffNo(), u.getPassword(), (u.isAdmin() ? 'y' : 'n'));
 	    	}
 	    	ps.close();
     	}

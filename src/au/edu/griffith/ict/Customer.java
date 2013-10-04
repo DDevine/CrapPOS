@@ -1,7 +1,7 @@
 package au.edu.griffith.ict;
 
 /**
- * 
+ * The Customer class represents information about a customer.
  * @author Ryan Beruldsen
  */
 public class Customer{

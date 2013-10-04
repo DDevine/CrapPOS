@@ -4,3 +4,16 @@ Bugs:
 	The menu had a price field, this was a design fault
 	The running total for the day is not required, it can be worked out upon request. (This can be done for any date)
 	
+	
+Scanner resource leak:
+The scanner was not closed, and this caused a resource leak in the program when starting up.  However,
+if the size of the customers and menu files were small this is negligible.
+
+Data corruption:
+Fields which may be entered by a user (Such as password, address and customer names) and saved to
+disk may not contain double dashes (--). If these are contained, then the programs will not crash,
+but will load data from disk inconsistently.
+
+Menu price:
+As per the design documentation, the Menu class initially had a floating point price field. This
+field was not required, as the menu is not an item on the menu.

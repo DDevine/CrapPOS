@@ -253,7 +253,6 @@ public class Order{
     	sb.append("\nStatus: " + status);
     	sb.append("\n");
     	
-    	
     	return sb.toString();
     }
 }

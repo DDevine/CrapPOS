@@ -2,4 +2,5 @@ Bugs:
 	Scanners were not closed when loading databases
 	Data stored in files with double dashes (--) will cause data inconsistency
 	The menu had a price field, this was a design fault
+	The running total for the day is not required, it can be worked out upon request. (This can be done for any date)
 	

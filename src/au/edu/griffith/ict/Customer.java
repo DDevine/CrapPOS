@@ -1,5 +1,9 @@
 package au.edu.griffith.ict;
 
+/**
+ * 
+ * @author Ryan Beruldsen
+ */
 public class Customer{
     /** The customers phone number */
     private String phNo;

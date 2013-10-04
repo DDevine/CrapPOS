@@ -6,6 +6,10 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Daniel Devine
+ */
 public class Menu implements Manager{
 	/**
 	 * A map of ItemIDNumber to MenuItem

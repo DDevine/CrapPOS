@@ -1,5 +1,10 @@
 package au.edu.griffith.ict;
 
+/**
+ * 
+ * @author Brittany Creary
+ *
+ */
 public class MenuItem{
     /** The name of the menu item */
     private String name;

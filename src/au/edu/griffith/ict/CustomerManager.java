@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Represents a CustomerManager class, which manages and controls customer loading and saving.
  *
- * @author Dirk
+ * @author Dirk Jamieson
  */
 public class CustomerManager implements Manager{
     /** The file which the CustomerManager is based on */

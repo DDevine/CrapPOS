@@ -9,10 +9,13 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 
+/**
+ * 
+ * @author Dirk Jamieson
+ */
 public class Main {
 	/** The file which the users are stored in */
     private final String USERS_FILE = "users.txt";
-    
     
     /** A reference to the Customer Manager*/
     private CustomerManager customers;

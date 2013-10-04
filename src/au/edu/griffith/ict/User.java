@@ -1,7 +1,10 @@
 package au.edu.griffith.ict;
 
+/**
+ * 
+ * @author Josh Stover
+ */
 public class User{
-
     /** The user's password */
     private String password;
     

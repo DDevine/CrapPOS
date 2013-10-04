@@ -1,4 +1,15 @@
-0--Pizza--9.50
-1--Cake--14.50
-2--Soft Drink--2.75
-3--Steak--19.90
+0--Cake--14.50
+1--Soft Drink--2.75
+3--Small Pizza--5.00
+4--Medium Pizza--7.00
+5--Large Pizza--10.00
+6--Cheese--0.00
+7--Extra Cheese--0.20
+8--Beef--0.00
+9--Chicken--1.00
+10--Salami--0.00
+11--Extra Salami--0.50
+12--Barbeque Sauce--0.00
+13--Tomato Sauce--0.00
+14--Sweet Chilli Swirl--0.10
+15--Capsicum--0.00

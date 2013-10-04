@@ -248,6 +248,7 @@ public class Order{
     	sb.append("Delivered: " + (delivery ? "Y" : "N"));
     	sb.append("\nCash: " + (isCash ? "Y" : "N"));
     	sb.append("\nClosed: " + (isClosed ? "Y" : "N"));
+    	sb.append("\nStatus: " + status);
     	sb.append("\n");
     	
     	

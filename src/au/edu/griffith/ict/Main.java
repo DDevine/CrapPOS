@@ -541,18 +541,23 @@ public class Main {
         while(s.isEmpty() == false){
             try{
                 MenuItem item = menu.getItem(Integer.parseInt(s));
-                System.out.print("Quantity: ");
-                s = sc.nextLine();
-                int amount = Integer.parseInt(s);
-                
-                System.out.print("Confirm (Y/N) " + item.toString() + " x" + amount + "?: ");
-                s = sc.nextLine();
-                if(s.equalsIgnoreCase("Y") == false){
-                    System.out.println("Item cancelled.");
+                if(item == null){
+                	System.out.println("Invalid menu item supplied.");
                 }
                 else{
-                    o.add(item, amount);
-                    System.out.println("Item added.");
+                	System.out.print("Quantity: ");
+                    s = sc.nextLine();
+                    int amount = Integer.parseInt(s);
+                    
+                    System.out.print("Confirm (Y/N) " + item.toString() + " x" + amount + "?: ");
+                    s = sc.nextLine();
+                    if(s.equalsIgnoreCase("Y") == false){
+                        System.out.println("Item cancelled.");
+                    }
+                    else{
+                        o.add(item, amount);
+                        System.out.println("Item added.");
+                    }
                 }
             }
             catch(NumberFormatException e){

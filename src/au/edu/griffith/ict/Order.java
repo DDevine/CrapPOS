@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 /**
  * 
- * @author Josh Stover
+ * @author Josh Stover, Alex Cumberland
  */
 public class Order{
 

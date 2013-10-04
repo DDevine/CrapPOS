@@ -417,7 +417,7 @@ public class Main {
 		        		
 		        		System.out.printf("%10s ", k);
 		        		System.out.printf("%10d ", sales);
-		        		System.out.printf("$%8.2f\n", total);
+		        		System.out.printf("$%10.2f\n", total);
 		        	}
 		        }
 		        else{

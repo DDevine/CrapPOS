@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Dirk Jamieson
+ * @author Dirk Jamieson, Alex Cumberland
  */
 public class Main {
 	/** The file which the users are stored in */
@@ -490,14 +490,6 @@ public class Main {
     */
     public float getDayTotal(){
         return dayTotal;
-    }
-    
-    /**
-    * Display the answer to the meaning of life (42).
-    * Is this meant to display the menu or something?
-    */
-    public void display(){
-        throw new UnsupportedOperationException("Not implemented yet.");
     }
     
     /**

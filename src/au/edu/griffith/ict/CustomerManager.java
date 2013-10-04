@@ -79,9 +79,8 @@ public class CustomerManager implements Manager{
                     //Skip this customer, the entry seems to be invalid.
                     continue;
                 }
-                
-                
             }
+            sc.close();
         }
         catch(IOException e){
             e.printStackTrace(); //DEBUG info

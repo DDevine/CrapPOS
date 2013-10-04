@@ -72,6 +72,7 @@ public class Menu implements Manager{
                     continue; //Continue trying the next
                 }
             }
+            sc.close();
         }
         catch(IOException e){
             e.printStackTrace(); //DEBUG

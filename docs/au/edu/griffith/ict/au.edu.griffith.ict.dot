@@ -15,9 +15,18 @@ digraph G {
 <tr><td align="center" balign="center"> Customer </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  phNo </td></tr>
-<tr><td align="left" balign="left">  address </td></tr>
-<tr><td align="left" balign="left">  name </td></tr>
+<tr><td align="left" balign="left"> - phNo : String </td></tr>
+<tr><td align="left" balign="left"> - address : String </td></tr>
+<tr><td align="left" balign="left"> - name : String </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Customer(phNumber : String, address : String, name : String) </td></tr>
+<tr><td align="left" balign="left"> + getPhoneNo() : String </td></tr>
+<tr><td align="left" balign="left"> + getAddress() : String </td></tr>
+<tr><td align="left" balign="left"> + getName() : String </td></tr>
+<tr><td align="left" balign="left"> + setPhoneNo(phNo : String) </td></tr>
+<tr><td align="left" balign="left"> + setAddress(address : String) </td></tr>
+<tr><td align="left" balign="left"> + setName(name : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Customer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.CustomerManager
@@ -26,8 +35,17 @@ digraph G {
 <tr><td align="center" balign="center"> CustomerManager </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  file </td></tr>
-<tr><td align="left" balign="left">  customers </td></tr>
+<tr><td align="left" balign="left"> - file : File </td></tr>
+<tr><td align="left" balign="left"> - customers : HashMap&lt;String, Customer&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + CustomerManager() </td></tr>
+<tr><td align="left" balign="left"> + newCustomer(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + update(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + remove(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + get(phNo : String) : Customer </td></tr>
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> # save() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./CustomerManager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Main
@@ -36,13 +54,22 @@ digraph G {
 <tr><td align="center" balign="center"> Main </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  USERS_FILE </td></tr>
-<tr><td align="left" balign="left">  customers </td></tr>
-<tr><td align="left" balign="left">  menu </td></tr>
-<tr><td align="left" balign="left">  orders </td></tr>
-<tr><td align="left" balign="left">  users </td></tr>
-<tr><td align="left" balign="left">  dayTotal </td></tr>
-<tr><td align="left" balign="left">  sc </td></tr>
+<tr><td align="left" balign="left"> - USERS_FILE : String </td></tr>
+<tr><td align="left" balign="left"> - customers : CustomerManager </td></tr>
+<tr><td align="left" balign="left"> - menu : Menu </td></tr>
+<tr><td align="left" balign="left"> - orders : LinkedList&lt;Order&gt; </td></tr>
+<tr><td align="left" balign="left"> - users : HashMap&lt;Integer, User&gt; </td></tr>
+<tr><td align="left" balign="left"> - dayTotal : float </td></tr>
+<tr><td align="left" balign="left"> - sc : Scanner </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Main() </td></tr>
+<tr><td align="left" balign="left"> + main(args : String[]) </td></tr>
+<tr><td align="left" balign="left"> + addOrder(order : Order) </td></tr>
+<tr><td align="left" balign="left"> + removeOrder(order : Order) </td></tr>
+<tr><td align="left" balign="left"> + getOrders(customer : Customer) : Order[] </td></tr>
+<tr><td align="left" balign="left"> + getDayTotal() : float </td></tr>
+<tr><td align="left" balign="left"> - buildOrder() : Order </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Main.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Manager
@@ -51,6 +78,12 @@ digraph G {
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Manager </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+		</table></td></tr>
 		</table>>, URL="./Manager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.MenuItem
 	c4 [label=<<table title="au.edu.griffith.ict.MenuItem" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MenuItem.html">
@@ -58,9 +91,17 @@ digraph G {
 <tr><td align="center" balign="center"> MenuItem </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  name </td></tr>
-<tr><td align="left" balign="left">  price </td></tr>
-<tr><td align="left" balign="left">  itemNo </td></tr>
+<tr><td align="left" balign="left"> - name : String </td></tr>
+<tr><td align="left" balign="left"> - price : float </td></tr>
+<tr><td align="left" balign="left"> - itemNo : int </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + MenuItem(itemNo : int, name : String, price : float) </td></tr>
+<tr><td align="left" balign="left"> + getPrice() : float </td></tr>
+<tr><td align="left" balign="left"> + setPricePerUnit(ppu : float) </td></tr>
+<tr><td align="left" balign="left"> + getName() : String </td></tr>
+<tr><td align="left" balign="left"> + getItemNo() : int </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./MenuItem.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Menu
@@ -69,9 +110,20 @@ digraph G {
 <tr><td align="center" balign="center"> Menu </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  menuItems </td></tr>
-<tr><td align="left" balign="left">  nextIDNo </td></tr>
-<tr><td align="left" balign="left">  file </td></tr>
+<tr><td align="left" balign="left"> - menuItems : HashMap&lt;Integer, MenuItem&gt; </td></tr>
+<tr><td align="left" balign="left"> - nextIDNo : int </td></tr>
+<tr><td align="left" balign="left"> - file : File </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Menu() </td></tr>
+<tr><td align="left" balign="left"> + getItem(itemNo : int) : MenuItem </td></tr>
+<tr><td align="left" balign="left"> + updateItem(item : MenuItem) </td></tr>
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> - save() </td></tr>
+<tr><td align="left" balign="left"> + newItem(item : MenuItem) </td></tr>
+<tr><td align="left" balign="left"> + nextItemNo() : int </td></tr>
+<tr><td align="left" balign="left"> + removeItem(itemNo : int) : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Menu.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Order
@@ -80,14 +132,34 @@ digraph G {
 <tr><td align="center" balign="center"> Order </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  items </td></tr>
-<tr><td align="left" balign="left">  cust </td></tr>
-<tr><td align="left" balign="left">  delivery </td></tr>
-<tr><td align="left" balign="left">  runningTotal </td></tr>
-<tr><td align="left" balign="left">  isClosed </td></tr>
-<tr><td align="left" balign="left">  isCash </td></tr>
-<tr><td align="left" balign="left">  status </td></tr>
-<tr><td align="left" balign="left">  createdDate </td></tr>
+<tr><td align="left" balign="left"> - items : HashMap&lt;MenuItem, Integer&gt; </td></tr>
+<tr><td align="left" balign="left"> - cust : Customer </td></tr>
+<tr><td align="left" balign="left"> - delivery : boolean </td></tr>
+<tr><td align="left" balign="left"> - runningTotal : float </td></tr>
+<tr><td align="left" balign="left"> - isClosed : boolean </td></tr>
+<tr><td align="left" balign="left"> - isCash : boolean </td></tr>
+<tr><td align="left" balign="left"> - status : OrderStatus </td></tr>
+<tr><td align="left" balign="left"> - createdDate : String </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Order(c : Customer) </td></tr>
+<tr><td align="left" balign="left"> + getCustomer() : Customer </td></tr>
+<tr><td align="left" balign="left"> + isDelivery() : boolean </td></tr>
+<tr><td align="left" balign="left"> + setIsDelivery(deliver : boolean) </td></tr>
+<tr><td align="left" balign="left"> + add(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + remove(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + set(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + get(item : MenuItem) : int </td></tr>
+<tr><td align="left" balign="left"> + getTotal() : float </td></tr>
+<tr><td align="left" balign="left"> + getClosed() : boolean </td></tr>
+<tr><td align="left" balign="left"> + close() </td></tr>
+<tr><td align="left" balign="left"> + setIsCash(cash : boolean) </td></tr>
+<tr><td align="left" balign="left"> + getIsCash() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getStatus() : OrderStatus </td></tr>
+<tr><td align="left" balign="left"> + setStatus(status : OrderStatus) </td></tr>
+<tr><td align="left" balign="left"> + getCreationDate() : String </td></tr>
+<tr><td align="left" balign="left"> + setCreationDate(date : String) </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Order.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.OrderStatus
@@ -96,18 +168,14 @@ digraph G {
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> OrderStatus </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> NEW </td></tr>
+<tr><td align="left" balign="left"> PAID </td></tr>
+		</table></td></tr>
 		</table>>, URL="./OrderStatus.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
-	// au.edu.griffith.ict.User
-	c8 [label=<<table title="au.edu.griffith.ict.User" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./User.html">
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="center" balign="center"> User </td></tr>
-		</table></td></tr>
-		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  password </td></tr>
-<tr><td align="left" balign="left">  staffNo </td></tr>
-<tr><td align="left" balign="left">  admin </td></tr>
-		</table></td></tr>
-		</table>>, URL="./User.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//au.edu.griffith.ict.CustomerManager implements au.edu.griffith.ict.Manager
 	c3:p -> c1:p [dir=back,arrowtail=empty,style=dashed];
 	//au.edu.griffith.ict.Menu implements au.edu.griffith.ict.Manager

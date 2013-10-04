@@ -10,23 +10,38 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// au.edu.griffith.ict.CustomerManager
-	c28 [label=<<table title="au.edu.griffith.ict.CustomerManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./CustomerManager.html">
+	c25 [label=<<table title="au.edu.griffith.ict.CustomerManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./CustomerManager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CustomerManager </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  file </td></tr>
-<tr><td align="left" balign="left">  customers </td></tr>
+<tr><td align="left" balign="left"> - file : File </td></tr>
+<tr><td align="left" balign="left"> - customers : HashMap&lt;String, Customer&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + CustomerManager() </td></tr>
+<tr><td align="left" balign="left"> + newCustomer(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + update(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + remove(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + get(phNo : String) : Customer </td></tr>
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> # save() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./CustomerManager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Manager
-	c30 [label=<<table title="au.edu.griffith.ict.Manager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Manager.html">
+	c27 [label=<<table title="au.edu.griffith.ict.Manager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Manager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Manager </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+		</table></td></tr>
 		</table>>, URL="./Manager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//au.edu.griffith.ict.CustomerManager implements au.edu.griffith.ict.Manager
-	c30:p -> c28:p [dir=back,arrowtail=empty,style=dashed];
+	c27:p -> c25:p [dir=back,arrowtail=empty,style=dashed];
 }
 

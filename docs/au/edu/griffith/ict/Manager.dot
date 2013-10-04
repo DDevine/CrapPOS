@@ -10,36 +10,62 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// au.edu.griffith.ict.CustomerManager
-	c46 [label=<<table title="au.edu.griffith.ict.CustomerManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CustomerManager.html">
+	c41 [label=<<table title="au.edu.griffith.ict.CustomerManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CustomerManager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CustomerManager </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  file </td></tr>
-<tr><td align="left" balign="left">  customers </td></tr>
+<tr><td align="left" balign="left"> - file : File </td></tr>
+<tr><td align="left" balign="left"> - customers : HashMap&lt;String, Customer&gt; </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + CustomerManager() </td></tr>
+<tr><td align="left" balign="left"> + newCustomer(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + update(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + remove(cust : Customer) </td></tr>
+<tr><td align="left" balign="left"> + get(phNo : String) : Customer </td></tr>
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> # save() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./CustomerManager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Manager
-	c48 [label=<<table title="au.edu.griffith.ict.Manager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Manager.html">
+	c43 [label=<<table title="au.edu.griffith.ict.Manager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Manager.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Manager </td></tr>
 		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+		</table></td></tr>
 		</table>>, URL="./Manager.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	// au.edu.griffith.ict.Menu
-	c50 [label=<<table title="au.edu.griffith.ict.Menu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Menu.html">
+	c45 [label=<<table title="au.edu.griffith.ict.Menu" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Menu.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Menu </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  menuItems </td></tr>
-<tr><td align="left" balign="left">  nextIDNo </td></tr>
-<tr><td align="left" balign="left">  file </td></tr>
+<tr><td align="left" balign="left"> - menuItems : HashMap&lt;Integer, MenuItem&gt; </td></tr>
+<tr><td align="left" balign="left"> - nextIDNo : int </td></tr>
+<tr><td align="left" balign="left"> - file : File </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Menu() </td></tr>
+<tr><td align="left" balign="left"> + getItem(itemNo : int) : MenuItem </td></tr>
+<tr><td align="left" balign="left"> + updateItem(item : MenuItem) </td></tr>
+<tr><td align="left" balign="left"> + loadDatabase(file : String) : boolean </td></tr>
+<tr><td align="left" balign="left"> - save() </td></tr>
+<tr><td align="left" balign="left"> + newItem(item : MenuItem) </td></tr>
+<tr><td align="left" balign="left"> + nextItemNo() : int </td></tr>
+<tr><td align="left" balign="left"> + removeItem(itemNo : int) : boolean </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Menu.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 	//au.edu.griffith.ict.CustomerManager implements au.edu.griffith.ict.Manager
-	c48:p -> c46:p [dir=back,arrowtail=empty,style=dashed];
+	c43:p -> c41:p [dir=back,arrowtail=empty,style=dashed];
 	//au.edu.griffith.ict.Menu implements au.edu.griffith.ict.Manager
-	c48:p -> c50:p [dir=back,arrowtail=empty,style=dashed];
+	c43:p -> c45:p [dir=back,arrowtail=empty,style=dashed];
 }
 

@@ -15,9 +15,15 @@ digraph G {
 <tr><td align="center" balign="center"> User </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  password </td></tr>
-<tr><td align="left" balign="left">  staffNo </td></tr>
-<tr><td align="left" balign="left">  admin </td></tr>
+<tr><td align="left" balign="left"> - password : String </td></tr>
+<tr><td align="left" balign="left"> - staffNo : int </td></tr>
+<tr><td align="left" balign="left"> - admin : boolean </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + User(staffNo : int, pass : String, admin : boolean) </td></tr>
+<tr><td align="left" balign="left"> + getStaffNo() : int </td></tr>
+<tr><td align="left" balign="left"> + getPassword() : String </td></tr>
+<tr><td align="left" balign="left"> + isAdmin() : boolean </td></tr>
 		</table></td></tr>
 		</table>>, URL="./User.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

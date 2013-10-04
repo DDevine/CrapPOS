@@ -10,19 +10,39 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// au.edu.griffith.ict.Order
-	c78 [label=<<table title="au.edu.griffith.ict.Order" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Order.html">
+	c70 [label=<<table title="au.edu.griffith.ict.Order" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Order.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Order </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  items </td></tr>
-<tr><td align="left" balign="left">  cust </td></tr>
-<tr><td align="left" balign="left">  delivery </td></tr>
-<tr><td align="left" balign="left">  runningTotal </td></tr>
-<tr><td align="left" balign="left">  isClosed </td></tr>
-<tr><td align="left" balign="left">  isCash </td></tr>
-<tr><td align="left" balign="left">  status </td></tr>
-<tr><td align="left" balign="left">  createdDate </td></tr>
+<tr><td align="left" balign="left"> - items : HashMap&lt;MenuItem, Integer&gt; </td></tr>
+<tr><td align="left" balign="left"> - cust : Customer </td></tr>
+<tr><td align="left" balign="left"> - delivery : boolean </td></tr>
+<tr><td align="left" balign="left"> - runningTotal : float </td></tr>
+<tr><td align="left" balign="left"> - isClosed : boolean </td></tr>
+<tr><td align="left" balign="left"> - isCash : boolean </td></tr>
+<tr><td align="left" balign="left"> - status : OrderStatus </td></tr>
+<tr><td align="left" balign="left"> - createdDate : String </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Order(c : Customer) </td></tr>
+<tr><td align="left" balign="left"> + getCustomer() : Customer </td></tr>
+<tr><td align="left" balign="left"> + isDelivery() : boolean </td></tr>
+<tr><td align="left" balign="left"> + setIsDelivery(deliver : boolean) </td></tr>
+<tr><td align="left" balign="left"> + add(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + remove(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + set(item : MenuItem, quantity : int) </td></tr>
+<tr><td align="left" balign="left"> + get(item : MenuItem) : int </td></tr>
+<tr><td align="left" balign="left"> + getTotal() : float </td></tr>
+<tr><td align="left" balign="left"> + getClosed() : boolean </td></tr>
+<tr><td align="left" balign="left"> + close() </td></tr>
+<tr><td align="left" balign="left"> + setIsCash(cash : boolean) </td></tr>
+<tr><td align="left" balign="left"> + getIsCash() : boolean </td></tr>
+<tr><td align="left" balign="left"> + getStatus() : OrderStatus </td></tr>
+<tr><td align="left" balign="left"> + setStatus(status : OrderStatus) </td></tr>
+<tr><td align="left" balign="left"> + getCreationDate() : String </td></tr>
+<tr><td align="left" balign="left"> + setCreationDate(date : String) </td></tr>
+<tr><td align="left" balign="left"> + toString() : String </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Order.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

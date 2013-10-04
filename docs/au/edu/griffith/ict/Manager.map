@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./CustomerManager.html" title="au.edu.griffith.ict.CustomerManager" alt="" coords="15,121,155,186"/>
-<area shape="rect" id="node1" href="./CustomerManager.html" title="&lt;TABLE&gt;" alt="" coords="5,115,166,191"/>
-<area shape="rect" id="node2_1" href="./Manager.html" title="au.edu.griffith.ict.Manager" alt="" coords="120,11,213,53"/>
-<area shape="rect" id="node2" href="./Manager.html" title="&lt;TABLE&gt;" alt="" coords="109,6,224,58"/>
-<area shape="rect" id="node3_2" href="./Menu.html" title="au.edu.griffith.ict.Menu" alt="" coords="201,113,298,194"/>
-<area shape="rect" id="node3" href="./Menu.html" title="&lt;TABLE&gt;" alt="" coords="190,107,309,199"/>
+<area shape="rect" id="node1_0" href="./CustomerManager.html" title="au.edu.griffith.ict.CustomerManager" alt="" coords="16,185,317,370"/>
+<area shape="rect" id="node1" href="./CustomerManager.html" title="&lt;TABLE&gt;" alt="" coords="5,179,328,375"/>
+<area shape="rect" id="node2_1" href="./Manager.html" title="au.edu.griffith.ict.Manager" alt="" coords="210,11,475,101"/>
+<area shape="rect" id="node2" href="./Manager.html" title="&lt;TABLE&gt;" alt="" coords="199,6,486,106"/>
+<area shape="rect" id="node3_2" href="./Menu.html" title="au.edu.griffith.ict.Menu" alt="" coords="363,161,677,394"/>
+<area shape="rect" id="node3" href="./Menu.html" title="&lt;TABLE&gt;" alt="" coords="353,155,687,399"/>
 </map>

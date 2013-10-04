@@ -10,14 +10,23 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// au.edu.griffith.ict.Customer
-	c10 [label=<<table title="au.edu.griffith.ict.Customer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Customer.html">
+	c9 [label=<<table title="au.edu.griffith.ict.Customer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./Customer.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Customer </td></tr>
 		</table></td></tr>
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
-<tr><td align="left" balign="left">  phNo </td></tr>
-<tr><td align="left" balign="left">  address </td></tr>
-<tr><td align="left" balign="left">  name </td></tr>
+<tr><td align="left" balign="left"> - phNo : String </td></tr>
+<tr><td align="left" balign="left"> - address : String </td></tr>
+<tr><td align="left" balign="left"> - name : String </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + Customer(phNumber : String, address : String, name : String) </td></tr>
+<tr><td align="left" balign="left"> + getPhoneNo() : String </td></tr>
+<tr><td align="left" balign="left"> + getAddress() : String </td></tr>
+<tr><td align="left" balign="left"> + getName() : String </td></tr>
+<tr><td align="left" balign="left"> + setPhoneNo(phNo : String) </td></tr>
+<tr><td align="left" balign="left"> + setAddress(address : String) </td></tr>
+<tr><td align="left" balign="left"> + setName(name : String) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./Customer.html", fontname="Helvetica", fontcolor="black", fontsize=10.0];
 }

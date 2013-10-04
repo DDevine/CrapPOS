@@ -1,20 +1,18 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./Customer.html" title="au.edu.griffith.ict.Customer" alt="" coords="15,51,99,133"/>
-<area shape="rect" id="node1" href="./Customer.html" title="&lt;TABLE&gt;" alt="" coords="5,46,110,138"/>
-<area shape="rect" id="node2_1" href="./CustomerManager.html" title="au.edu.griffith.ict.CustomerManager" alt="" coords="41,241,181,306"/>
-<area shape="rect" id="node2" href="./CustomerManager.html" title="&lt;TABLE&gt;" alt="" coords="30,235,191,311"/>
-<area shape="rect" id="node3_2" href="./Main.html" title="au.edu.griffith.ict.Main" alt="" coords="284,19,385,165"/>
-<area shape="rect" id="node3" href="./Main.html" title="&lt;TABLE&gt;" alt="" coords="273,14,396,170"/>
-<area shape="rect" id="node4_3" href="./Manager.html" title="au.edu.griffith.ict.Manager" alt="" coords="145,71,239,113"/>
-<area shape="rect" id="node4" href="./Manager.html" title="&lt;TABLE&gt;" alt="" coords="135,66,249,118"/>
-<area shape="rect" id="node6_4" href="./Menu.html" title="au.edu.griffith.ict.Menu" alt="" coords="226,233,323,314"/>
-<area shape="rect" id="node6" href="./Menu.html" title="&lt;TABLE&gt;" alt="" coords="215,227,334,319"/>
-<area shape="rect" id="node5_5" href="./MenuItem.html" title="au.edu.griffith.ict.MenuItem" alt="" coords="431,51,516,133"/>
-<area shape="rect" id="node5" href="./MenuItem.html" title="&lt;TABLE&gt;" alt="" coords="420,46,527,138"/>
-<area shape="rect" id="node7_6" href="./Order.html" title="au.edu.griffith.ict.Order" alt="" coords="562,11,667,173"/>
-<area shape="rect" id="node7" href="./Order.html" title="&lt;TABLE&gt;" alt="" coords="551,6,678,178"/>
-<area shape="rect" id="node8_7" href="./OrderStatus.html" title="au.edu.griffith.ict.OrderStatus" alt="" coords="713,71,831,113"/>
-<area shape="rect" id="node8" href="./OrderStatus.html" title="&lt;TABLE&gt;" alt="" coords="702,66,842,118"/>
-<area shape="rect" id="node9_8" href="./User.html" title="au.edu.griffith.ict.User" alt="" coords="877,51,963,133"/>
-<area shape="rect" id="node9" href="./User.html" title="&lt;TABLE&gt;" alt="" coords="867,46,973,138"/>
+<area shape="rect" id="node1_0" href="./Customer.html" title="au.edu.griffith.ict.Customer" alt="" coords="15,139,446,341"/>
+<area shape="rect" id="node1" href="./Customer.html" title="&lt;TABLE&gt;" alt="" coords="5,134,457,346"/>
+<area shape="rect" id="node2_1" href="./CustomerManager.html" title="au.edu.griffith.ict.CustomerManager" alt="" coords="296,553,597,738"/>
+<area shape="rect" id="node2" href="./CustomerManager.html" title="&lt;TABLE&gt;" alt="" coords="285,547,608,743"/>
+<area shape="rect" id="node3_2" href="./Main.html" title="au.edu.griffith.ict.Main" alt="" coords="803,107,1107,373"/>
+<area shape="rect" id="node3" href="./Main.html" title="&lt;TABLE&gt;" alt="" coords="792,102,1117,378"/>
+<area shape="rect" id="node4_3" href="./Manager.html" title="au.edu.griffith.ict.Manager" alt="" coords="491,195,757,285"/>
+<area shape="rect" id="node4" href="./Manager.html" title="&lt;TABLE&gt;" alt="" coords="481,190,767,290"/>
+<area shape="rect" id="node6_4" href="./Menu.html" title="au.edu.griffith.ict.Menu" alt="" coords="643,529,957,762"/>
+<area shape="rect" id="node6" href="./Menu.html" title="&lt;TABLE&gt;" alt="" coords="633,523,967,767"/>
+<area shape="rect" id="node5_5" href="./MenuItem.html" title="au.edu.griffith.ict.MenuItem" alt="" coords="1153,147,1511,333"/>
+<area shape="rect" id="node5" href="./MenuItem.html" title="&lt;TABLE&gt;" alt="" coords="1142,142,1522,338"/>
+<area shape="rect" id="node7_6" href="./Order.html" title="au.edu.griffith.ict.Order" alt="" coords="1557,11,1845,469"/>
+<area shape="rect" id="node7" href="./Order.html" title="&lt;TABLE&gt;" alt="" coords="1547,6,1856,474"/>
+<area shape="rect" id="node8_7" href="./OrderStatus.html" title="au.edu.griffith.ict.OrderStatus" alt="" coords="1891,187,2010,293"/>
+<area shape="rect" id="node8" href="./OrderStatus.html" title="&lt;TABLE&gt;" alt="" coords="1881,182,2021,298"/>
 </map>

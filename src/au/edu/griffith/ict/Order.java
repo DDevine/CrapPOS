@@ -80,7 +80,7 @@ public class Order{
      * @param deliver Whether the order is to be delivered
      */
     public void setIsDelivery(boolean deliver){
-    	this.delivery = deliver;
+        this.delivery = deliver;
     }
     
     /**
@@ -107,10 +107,10 @@ public class Order{
             quantity -= n;
         }
         if(quantity <= 0){
-        	this.set(item, 0);
+            this.set(item, 0);
         }
         else{
-        	this.set(item, quantity);
+            this.set(item, quantity);
         }
     }
     
@@ -120,14 +120,14 @@ public class Order{
     * @param quantity   The number of MenuItem objects the order is to have.
     */
     public void set(MenuItem item, int quantity){
-    	if(items.get(item) != null){
-    		int amount = items.get(item);
-    		runningTotal -= (amount * item.getPrice());
-    	}
-    	if(quantity <= 0){
-    		items.remove(item);
-    		return;
-    	}
+        if(items.get(item) != null){
+            int amount = items.get(item);
+            runningTotal -= (amount * item.getPrice());
+        }
+        if(quantity <= 0){
+            items.remove(item);
+            return;
+        }
         items.put(item, quantity);
         runningTotal += quantity * item.getPrice();
     }
@@ -194,7 +194,7 @@ public class Order{
      * @return the status of this order (NEW, or PAID)
      */
     public OrderStatus getStatus(){
-    	return status;
+        return status;
     }
     
     /**
@@ -202,7 +202,7 @@ public class Order{
      * @param status The status (NEW or PAID)
      */
     public void setStatus(OrderStatus status){
-    	this.status = status;
+        this.status = status;
     }
     
     /**
@@ -210,7 +210,7 @@ public class Order{
      * @return The date that this order was created, in the format YYYY-MM-DD
      */
     public String getCreationDate(){
-    	return createdDate;
+        return createdDate;
     }
     
     /**
@@ -219,12 +219,12 @@ public class Order{
      * @throws IllegalArgumentException if the date is not in the format YYYY-MM-DD
      */
     public void setCreationDate(String date){
-    	Pattern p = Pattern.compile("\\d\\d\\d\\d-[0-1]\\d-[0-3]\\d"); 
-    	Matcher m = p.matcher(date);
-    	if(m.matches() == false){
-    		throw new IllegalArgumentException("Invalid date given: " + date + ", must be of format yyyy-mm-dd.");
-    	}
-    	this.createdDate = date;
+        Pattern p = Pattern.compile("\\d\\d\\d\\d-[0-1]\\d-[0-3]\\d"); 
+        Matcher m = p.matcher(date);
+        if(m.matches() == false){
+            throw new IllegalArgumentException("Invalid date given: " + date + ", must be of format yyyy-mm-dd.");
+        }
+        this.createdDate = date;
     }
     
     /**
@@ -234,29 +234,29 @@ public class Order{
      */
     @Override
     public String toString(){
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("Customer: " + cust.getPhoneNo());
-    	sb.append("Name: " + cust.getName());
-    	sb.append("\n=======");
-    	sb.append("\nItems:\n");
-    	
-    	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
-    	float total = 0;
-    	for(MenuItem item : items.keySet()){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Customer: " + cust.getPhoneNo());
+        sb.append("Name: " + cust.getName());
+        sb.append("\n=======");
+        sb.append("\nItems:\n");
+        
+        sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
+        float total = 0;
+        for(MenuItem item : items.keySet()){
             if(item == null) continue;
             int amount = items.get(item);
             sb.append(String.format("%-3d %-20.20s $%-3.2f x%d\n", item.getItemNo(), item.getName(), item.getPrice(), amount));
             total += amount * item.getPrice();
         }
-    	sb.append("=======\n");
-    	sb.append(String.format("Total: $%.2f\n", total));
-    	sb.append("Delivered: " + (delivery ? "Y" : "N"));
-    	if(delivery) sb.append("Address: " + cust.getAddress());
-    	sb.append("\nCash: " + (isCash ? "Y" : "N"));
-    	sb.append("\nClosed: " + (isClosed ? "Y" : "N"));
-    	sb.append("\nStatus: " + status);
-    	sb.append("\n");
-    	
-    	return sb.toString();
+        sb.append("=======\n");
+        sb.append(String.format("Total: $%.2f\n", total));
+        sb.append("Delivered: " + (delivery ? "Y" : "N"));
+        if(delivery) sb.append("Address: " + cust.getAddress());
+        sb.append("\nCash: " + (isCash ? "Y" : "N"));
+        sb.append("\nClosed: " + (isClosed ? "Y" : "N"));
+        sb.append("\nStatus: " + status);
+        sb.append("\n");
+        
+        return sb.toString();
     }
 }

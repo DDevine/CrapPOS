@@ -11,11 +11,11 @@ import java.util.Scanner;
  * @author Daniel Devine
  */
 public class Menu implements Manager{
-	/**
-	 * A map of ItemIDNumber to MenuItem
-	 */
-	private HashMap<Integer, MenuItem> menuItems = new HashMap<Integer, MenuItem>();
-	
+    /**
+     * A map of ItemIDNumber to MenuItem
+     */
+    private HashMap<Integer, MenuItem> menuItems = new HashMap<Integer, MenuItem>();
+    
     /** 
      * Keeps track of the next available ID number 
      */
@@ -49,7 +49,7 @@ public class Menu implements Manager{
     */
     @Override
     public boolean loadDatabase(String file) {
-    	try{
+        try{
             this.file = new File(file);
             this.file.createNewFile();
             
@@ -89,11 +89,11 @@ public class Menu implements Manager{
     * Serialise the MenuItems on the Menu and write them to the database.
     */
     private void save(){
-    	 try{
+         try{
              PrintStream ps = new PrintStream(file);
              for(MenuItem it : menuItems.values()){
-             	if(it == null) continue;
-             	ps.print(it.getItemNo() + "--");
+                 if(it == null) continue;
+                 ps.print(it.getItemNo() + "--");
                  ps.print(it.getName() + "--");
                  ps.print(it.getPrice() + "--");
                  ps.println();
@@ -111,7 +111,7 @@ public class Menu implements Manager{
     * @param item The item to be added to the menu.
     */
     public void newItem(MenuItem item){
-    	menuItems.put(item.getItemNo(), item);
+        menuItems.put(item.getItemNo(), item);
         this.save();
     }
     
@@ -130,7 +130,7 @@ public class Menu implements Manager{
     */
     public boolean removeItem(int itemNo){
         if(menuItems.remove(itemNo) != null){
-        	this.save();
+            this.save();
             return true;
         }
         return false; //Not in the item list
@@ -138,15 +138,15 @@ public class Menu implements Manager{
     
     /**
      * Returns a text representation of the menu in the format:
-     * ID	Item	Price
-     * 0	Pizza	$9.50
-     * 1	Apples	$0.30
+     * ID    Item    Price
+     * 0    Pizza    $9.50
+     * 1    Apples    $0.30
      */
     @Override
     public String toString(){
-    	StringBuilder sb = new StringBuilder();
-    	sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
-    	for(MenuItem item : menuItems.values()){
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%-3s %-20.20s Price\n", "ID", "Item"));
+        for(MenuItem item : menuItems.values()){
             if(item == null) continue;
             sb.append(String.format("%-3d %-20.20s $%.2f\n", item.getItemNo(), item.getName(), item.getPrice()));
         }

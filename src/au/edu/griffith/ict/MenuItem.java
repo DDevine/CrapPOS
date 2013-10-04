@@ -1,9 +1,8 @@
 package au.edu.griffith.ict;
 
 /**
- * 
+ * A class which represents an item on the menu.
  * @author Brittany Creary
- *
  */
 public class MenuItem{
     /** The name of the menu item */

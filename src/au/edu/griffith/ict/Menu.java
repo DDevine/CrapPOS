@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * 
+ * A Manager class which represents a Menu and implements saving and loading.
  * @author Daniel Devine
  */
 public class Menu implements Manager{

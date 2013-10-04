@@ -27,9 +27,6 @@ public class Main {
     /** A non-persistent list of Orders */
     private LinkedList<Order> orders;
     
-    /** A non-presistent list of Users */
-    private HashMap<Integer, User> users;
-    
     /** A running total of the day's takings. */
     private float dayTotal; //This wasn't in the design docs.
         

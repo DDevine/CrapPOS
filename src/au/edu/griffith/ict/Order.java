@@ -232,6 +232,7 @@ public class Order{
     public String toString(){
     	StringBuilder sb = new StringBuilder();
     	sb.append("Customer: " + cust.getPhoneNo());
+    	sb.append("Name: " + cust.getName());
     	sb.append("\n=======");
     	sb.append("\nItems:\n");
     	
@@ -246,6 +247,7 @@ public class Order{
     	sb.append("=======\n");
     	sb.append(String.format("Total: $%.2f\n", total));
     	sb.append("Delivered: " + (delivery ? "Y" : "N"));
+    	if(delivery) sb.append("Address: " + cust.getAddress());
     	sb.append("\nCash: " + (isCash ? "Y" : "N"));
     	sb.append("\nClosed: " + (isClosed ? "Y" : "N"));
     	sb.append("\nStatus: " + status);

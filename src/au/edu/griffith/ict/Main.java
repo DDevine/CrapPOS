@@ -10,10 +10,7 @@ import java.util.Scanner;
 
 
 public class Main {
-    // custManager: CustomerManager
-    // itemManager: Menu
-    // orders: Order[*]
-    // users: User[*]
+	/** The file which the users are stored in */
     private final String USERS_FILE = "users.txt";
     
     

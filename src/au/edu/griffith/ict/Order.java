@@ -124,6 +124,10 @@ public class Order{
     		int amount = items.get(item);
     		runningTotal -= (amount * item.getPrice());
     	}
+    	if(quantity <= 0){
+    		items.remove(item);
+    		return;
+    	}
         items.put(item, quantity);
         runningTotal += quantity * item.getPrice();
     }

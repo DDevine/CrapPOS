@@ -54,7 +54,6 @@ public class Main {
             System.out.println("What do you wish to do?");
             System.out.println("Order handling (O)");
             System.out.println("Menu Handling (M)");
-            System.out.println("User Handling (U)");
             System.out.println("Sales Summary (S)");
             System.out.print("Option: ");
             
@@ -74,6 +73,7 @@ public class Main {
                 System.out.println("List Orders (L)");
                 System.out.println("Close Order (F)");
                 System.out.println("Delete Orders (D)");
+                System.out.println("Return to Main Menu (M)");
                 System.out.print("Option: ");
                     
                 s = sc.nextLine();
@@ -98,8 +98,8 @@ public class Main {
                     }
                 }
                     
-            // Pay order
-            else if(s.equals("P")){
+                // Pay order
+                else if(s.equals("P")){
                     try{
                         System.out.println("Orders (" + orders.size() + "):");
                         for(int i = 0; i < orders.size(); i++){
@@ -169,6 +169,12 @@ public class Main {
                         continue;
                     }
                 }
+                
+                                // Return to Main Menu
+                else if(s.equals("M")){
+                    continue;
+                }
+                
                 else{
                     System.out.println("Unrecognised command.");
                     continue;
@@ -182,6 +188,7 @@ public class Main {
                 System.out.println("Edit Menu Item (E)");
                 System.out.println("Remove Menu Item (R)");
                 System.out.println("Display Menu (L)");
+                System.out.println("Return to Main Menu (M)");
                 System.out.print("Option: ");
                 
                 s = sc.nextLine();
@@ -249,7 +256,14 @@ public class Main {
                 // List menu
                 else if(s.equals("L")){
                     System.out.println(menu.toString());
-                } else {
+                }                 
+                
+                // Return to Main Menu
+                else if(s.equals("M")){
+                    continue;
+                }
+                
+                else {
                     System.out.println("Unrecognised command.");
                     continue;
                 }

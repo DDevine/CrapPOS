@@ -79,7 +79,7 @@ public class Order{
      * Sets the delivery status of this order (Whether it is to be delivered or not)
      * @param deliver Whether the order is to be delivered
      */
-    public void setIsDelivery(boolean deliver){
+    public void setDelivery(boolean deliver){
         this.delivery = deliver;
     }
     
@@ -93,7 +93,7 @@ public class Order{
             int n = items.get(item);
             quantity += n;
         }
-        this.set(item, quantity);
+        this.setQty(item, quantity);
     }
     
     /**
@@ -107,10 +107,10 @@ public class Order{
             quantity -= n;
         }
         if(quantity <= 0){
-            this.set(item, 0);
+            this.setQty(item, 0);
         }
         else{
-            this.set(item, quantity);
+            this.setQty(item, quantity);
         }
     }
     
@@ -119,7 +119,7 @@ public class Order{
     * @param item       The MenuItem object of which you want to change the number of.
     * @param quantity   The number of MenuItem objects the order is to have.
     */
-    public void set(MenuItem item, int quantity){
+    public void setQty(MenuItem item, int quantity){
         if(items.get(item) != null){
             int amount = items.get(item);
             runningTotal -= (amount * item.getPrice());
@@ -136,7 +136,7 @@ public class Order{
     * Get the quantity of a particular item on the order.
     * @param item       The MenuItem of which you want to retrieve the quantity for.
     */
-    public int get(MenuItem item){
+    public int getQty(MenuItem item){
         if(items.containsKey(item)){
             /* Long story why this isn't simply "return items.get(item);"...
              * The map maps OBJECTS to OBJECTS. When an int is put in the map, it is wrapped as an INTEGER (Thanks to java's auto boxing)
@@ -163,7 +163,7 @@ public class Order{
     /**
     * Return whether the order has been closed or not.
     */
-    public boolean getClosed(){
+    public boolean isClosed(){
         return isClosed;
     }
     
@@ -178,14 +178,14 @@ public class Order{
     * Set whether an order is to be paid in Cash or not.
     * @param isCash     If True an order is paid with Cash.
     */
-    public void setIsCash(boolean cash){
+    public void setCash(boolean cash){
         isCash = cash;
     }
     
     /**
     * Return whether an order is to be paid in cash or not.
     */
-    public boolean getIsCash(){
+    public boolean isCash(){
         return isCash;
     }
     

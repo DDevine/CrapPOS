@@ -1,8 +1,6 @@
 package au.edu.griffith.ict;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -320,7 +318,7 @@ public class Main {
     * @param order The order to be removed.
     */
     public void removeOrder(Order order){
-        if(!order.getClosed()) order.close();
+        if(!order.isClosed()) order.close();
         if(orders.remove(order)){
             //We had the order listed, so we should remove its total from the days total if we're deleting it.
             dayTotal -= order.getTotal();
@@ -386,11 +384,11 @@ public class Main {
         
         System.out.print("Delivery (Y/N)?: ");
         s = sc.nextLine();
-        o.setIsDelivery(s.equalsIgnoreCase("Y"));
+        o.setDelivery(s.equalsIgnoreCase("Y"));
         
         System.out.print("Cash (Y/N)?: ");
         s = sc.nextLine();
-        o.setIsCash(s.equalsIgnoreCase("Y"));
+        o.setCash(s.equalsIgnoreCase("Y"));
         
         System.out.println(menu.toString());
         System.out.println("Please select the menu items from above.");

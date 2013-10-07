@@ -1,4 +1,4 @@
-CrapPOS
+POS
 =======
 
-A crappy POS project for 2509ICT purposes.
+A POS project for 2509ICT purposes.

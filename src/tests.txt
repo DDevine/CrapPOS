@@ -5,6 +5,8 @@ Bugs:
 	The running total for the day is not required, it can be worked out upon request. (This can be done for any date)
 	Entering an invalid option at the menu crashed the program
 	Removed display() function from Main
+	Method to remove a quantity of items from an order always removes all of the item type
+
 	
 Scanner resource leak:
 The scanner was not closed, and this caused a resource leak in the program when starting up.  However,
@@ -31,3 +33,7 @@ since been fixed.
 Display Function Removed:
 The display function was removed from the Main class, as the implementation was downsized from
 a graphical swing interface to a text based command line interface.
+
+Order.remove() broken:
+The previous item quantity is being subtracted from the argument quantity, resulting in either
+the argument being negative, and thus set to zero, or the argument becomes incorrect. (Order.java:17)
